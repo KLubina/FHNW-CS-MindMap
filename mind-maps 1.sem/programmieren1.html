@@ -271,7 +271,7 @@
                           children: [
                             {
                               title: "Bubble Sort",
-                              code: "for (int i = 0; i < n - 1; i++) {\n    for (int j = 0; j < n - i - 1; j++) {\n        if (array[j] > array[j + 1]) {\n            int temp = array[j];\n            array[j] = array[j + 1];\n            array[j + 1] = temp;\n        }\n    }\n}"
+                              code: "// Gehe durch die Liste\n// Vergleiche zwei Elemente\n// Wenn das erste grösser ist, tausche sie\n// Gehe zum nächsten\n// Wiederhole\nfor (int i = 0; i < n - 1; i++) {\n    for (int j = 0; j < n - i - 1; j++) {\n        if (array[j] > array[j + 1]) {\n            int temp = array[j];\n            array[j] = array[j + 1];\n            array[j + 1] = temp;\n        }\n    }\n}"
                             },
                             {
                               title: "Insertion Sort",
@@ -279,10 +279,16 @@
                             },
                             {
                               title: "Selection Sort",
-                              code: "for (int i = 0; i < n - 1; i++) {\n    int minIdx = i;\n    for (int j = i + 1; j < n; j++) {\n        if (array[j] < array[minIdx])\n            minIdx = j;\n    }\n    int temp = array[i];\n    array[i] = array[minIdx];\n    array[minIdx] = temp;\n}"
+                              code: "// Gehe durch die Liste\n// Finde das kleinste Element im unsortierten Teil\n// Tausche es mit dem ersten unsortierten Element\n// Erweitere den sortierten Teil um eins\n// Wiederhole\nfor (int i = 0; i < n - 1; i++) {\n    int minIdx = i;\n    for (int j = i + 1; j < n; j++) {\n        if (array[j] < array[minIdx])\n            minIdx = j;\n    }\n    int temp = array[i];\n    array[i] = array[minIdx];\n    array[minIdx] = temp;\n}"
                             },
-                            { title: "Merge Sort" },
-                            { title: "Quick Sort" }
+                            {
+                              title: "Merge Sort",
+                              code: "// Teile Liste in zwei Hälften\n// Sortiere rekursiv jede Hälfte\n// Verschmelze die beiden sortierten Hälften\npublic void mergeSort(int[] array, int left, int right) {\n    if (left < right) {\n        int mid = (left + right) / 2;\n        mergeSort(array, left, mid);\n        mergeSort(array, mid + 1, right);\n        merge(array, left, mid, right);\n    }\n}\n\npublic void merge(int[] array, int left, int mid, int right) {\n    int n1 = mid - left + 1;\n    int n2 = right - mid;\n    int[] L = new int[n1];\n    int[] R = new int[n2];\n    for (int i = 0; i < n1; i++) L[i] = array[left + i];\n    for (int j = 0; j < n2; j++) R[j] = array[mid + 1 + j];\n    int i = 0, j = 0, k = left;\n    while (i < n1 && j < n2) {\n        if (L[i] <= R[j]) array[k++] = L[i++];\n        else array[k++] = R[j++];\n    }\n    while (i < n1) array[k++] = L[i++];\n    while (j < n2) array[k++] = R[j++];\n}"
+                            },
+                            {
+                              title: "Quick Sort",
+                              code: "// Wähle ein Pivot\n// Partitioniere Liste in Werte <= Pivot und > Pivot\n// Sortiere rekursiv beide Teile\npublic void quickSort(int[] array, int low, int high) {\n    if (low < high) {\n        int pi = partition(array, low, high);\n        quickSort(array, low, pi - 1);\n        quickSort(array, pi + 1, high);\n    }\n}\n\npublic int partition(int[] array, int low, int high) {\n    int pivot = array[high];\n    int i = (low - 1);\n    for (int j = low; j <= high - 1; j++) {\n        if (array[j] < pivot) {\n            i++;\n            int temp = array[i];\n            array[i] = array[j];\n            array[j] = temp;\n        }\n    }\n    int temp = array[i + 1];\n    array[i + 1] = array[high];\n    array[high] = temp;\n    return i + 1;\n}"
+                            }
                           ]
                         }
                       ]
