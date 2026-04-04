@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -83,6 +84,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <h1>System Engineering</h1>
@@ -95,96 +97,81 @@
   <div id="app"></div>
 
   <script>
-    const data = {
+        const data = {
       title: "System Engineering",
       children: [
         {
-          title: "1st Level",
+          title: "Betriebssysteme",
+          children: [
+            { title: "Konzeptionelle Grundlagen und Komponenten moderner Computersysteme werden verstanden" }
+          ]
+        },
+        {
+          title: "Administration",
+          children: [
+            { title: "Die Studierenden können sicher Server installieren und administrieren" },
+            { title: "Beispiel Linux" }
+          ]
+        },
+        {
+          title: "Automatisierung",
           children: [
             {
-              title: "Computersysteme vollumfänglich zu installieren und administrieren zu können.",
+              title: "Scripte und Befehle zur erweiterten Systemadministration und zur Automatisierung können angewendet werden",
               children: [
-                {
-                  title: "Most detailed Level",
-                  children: [
-                    {
-                      title: "Betriebssysteme",
-                      children: [
-                        { title: "Konzeptionelle Grundlagen und Komponenten moderner Computersysteme werden verstanden" }
-                      ]
-                    },
-                    {
-                      title: "Administration",
-                      children: [
-                        { title: "Die Studierenden können sicher Server installieren und administrieren" },
-                        { title: "Beispiel Linux" }
-                      ]
-                    },
-                    {
-                      title: "Automatisierung",
-                      children: [
-                        {
-                          title: "Scripte und Befehle zur erweiterten Systemadministration und zur Automatisierung können angewendet werden",
-                          children: [
-                            { title: "bspw. Prozesse" },
-                            { title: "Services" },
-                            { title: "Usermanagement" }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      title: "Sicherheit",
-                      children: [
-                        {
-                          title: "Verschiedene anwendbare Sicherheitsmechanismen für Systeme wie",
-                          children: [
-                            { title: "SSL" },
-                            { title: "SSH" },
-                            { title: "Hashing können angewendet werden." }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      title: "Netzwerk",
-                      children: [
-                        {
-                          title: "Verstehen von Computernetzwerken",
-                          children: [
-                            { title: "bspw. IP-Adressen" },
-                            { title: "DNS" },
-                            { title: "Router" },
-                            { title: "Subnetting" },
-                            { title: "OSI-Layer" },
-                            { title: "Protokolle (TCP/UDP/QUIC)" },
-                            { title: "VLANs" },
-                            { title: "DHCP" },
-                            { title: "IPv6" },
-                            { title: "NAT" },
-                            { title: "Basic Firewall" }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      title: "Datenspeicherung",
-                      children: [
-                        { title: "File" },
-                        { title: "Block" },
-                        { title: "Filesysteme, etc." }
-                      ]
-                    },
-                    {
-                      title: "Containerisierung",
-                      children: [
-                        { title: "Anwenden von Containerisierungslösungen zum Bereitstellen von verschiedenen Services" }
-                      ]
-                    }
-                  ]
-                }
+                { title: "bspw. Prozesse" },
+                { title: "Services" },
+                { title: "Usermanagement" }
               ]
             }
+          ]
+        },
+        {
+          title: "Sicherheit",
+          children: [
+            {
+              title: "Verschiedene anwendbare Sicherheitsmechanismen für Systeme wie",
+              children: [
+                { title: "SSL" },
+                { title: "SSH" },
+                { title: "Hashing können angewendet werden." }
+              ]
+            }
+          ]
+        },
+        {
+          title: "Netzwerk",
+          children: [
+            {
+              title: "Verstehen von Computernetzwerken",
+              children: [
+                { title: "bspw. IP-Adressen" },
+                { title: "DNS" },
+                { title: "Router" },
+                { title: "Subnetting" },
+                { title: "OSI-Layer" },
+                { title: "Protokolle (TCP/UDP/QUIC)" },
+                { title: "VLANs" },
+                { title: "DHCP" },
+                { title: "IPv6" },
+                { title: "NAT" },
+                { title: "Basic Firewall" }
+              ]
+            }
+          ]
+        },
+        {
+          title: "Datenspeicherung",
+          children: [
+            { title: "File" },
+            { title: "Block" },
+            { title: "Filesysteme, etc." }
+          ]
+        },
+        {
+          title: "Containerisierung",
+          children: [
+            { title: "Anwenden von Containerisierungslösungen zum Bereitstellen von verschiedenen Services" }
           ]
         }
       ]
@@ -229,4 +216,5 @@
     app.appendChild(createNode(data));
   </script>
 </body>
+
 </html>

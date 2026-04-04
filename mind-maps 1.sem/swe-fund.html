@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -83,6 +84,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <h1>Software Engineering Fundamentals</h1>
@@ -99,68 +101,53 @@
       title: "Software Engineering Fundamentals",
       children: [
         {
-          title: "1st Level",
+          title: "Requirements Engineering",
+          children: [
+            { title: "Anforderungen erheben und analysieren" },
+            { title: "Probleme analysieren & modellieren" },
+            { title: "Projektaufgaben des Requirements Engineering übernehmen" }
+          ]
+        },
+        {
+          title: "System Design",
+          children: [
+            { title: "Softwarespezifische Herausforderungen erkennen" },
+            {
+              title: "Rollen & Prozesse verstehen",
+              children: [
+                { title: "Entwicklungstechniken anwenden" }
+              ]
+            },
+            {
+              title: "Modellierung",
+              children: [
+                { title: "Problem- und Lösungsmodelle erstellen" },
+                { title: "Komplexität handhaben & abstrahieren" }
+              ]
+            }
+          ]
+        },
+        {
+          title: "Programmierung",
           children: [
             {
-              title: "Grundlegende Konzepte, Aufgaben und Methoden des Entwicklungprozesses von Software ein.",
+              title: "Systementwürfe umsetzen",
               children: [
-                {
-                  title: "Most detailed Level",
-                  children: [
-                    {
-                      title: "Requirements Engineering",
-                      children: [
-                        { title: "Anforderungen erheben und analysieren" },
-                        { title: "Probleme analysieren & modellieren" },
-                        { title: "Projektaufgaben des Requirements Engineering übernehmen" }
-                      ]
-                    },
-                    {
-                      title: "System Design",
-                      children: [
-                        { title: "Softwarespezifische Herausforderungen erkennen" },
-                        {
-                          title: "Rollen & Prozesse verstehen",
-                          children: [
-                            { title: "Entwicklungstechniken anwenden" }
-                          ]
-                        },
-                        {
-                          title: "Modellierung",
-                          children: [
-                            { title: "Problem- und Lösungsmodelle erstellen" },
-                            { title: "Komplexität handhaben & abstrahieren" }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      title: "Programmierung",
-                      children: [
-                        {
-                          title: "Systementwürfe umsetzen",
-                          children: [
-                            { title: "Projektaufgaben als Programmierer übernehmen" },
-                            { title: "Methoden & Techniken anwenden" }
-                          ]
-                        },
-                        { title: "Engineering-Werkzeuge kennen" }
-                      ]
-                    },
-                    {
-                      title: "Testing",
-                      children: [
-                        {
-                          title: "Teststrategien anwenden",
-                          children: [
-                            { title: "Qualitätssicherung unterstützen" },
-                            { title: "Grundkonzepte des Software Engineering kennen" }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
+                { title: "Projektaufgaben als Programmierer übernehmen" },
+                { title: "Methoden & Techniken anwenden" }
+              ]
+            },
+            { title: "Engineering-Werkzeuge kennen" }
+          ]
+        },
+        {
+          title: "Testing",
+          children: [
+            {
+              title: "Teststrategien anwenden",
+              children: [
+                { title: "Qualitätssicherung unterstützen" },
+                { title: "Grundkonzepte des Software Engineering kennen" }
               ]
             }
           ]
@@ -207,4 +194,5 @@
     app.appendChild(createNode(data));
   </script>
 </body>
+
 </html>

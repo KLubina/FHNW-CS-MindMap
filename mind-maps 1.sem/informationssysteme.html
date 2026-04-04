@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -83,6 +84,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <h1>Informationssysteme</h1>
@@ -95,64 +97,49 @@
   <div id="app"></div>
 
   <script>
-    const data = {
+        const data = {
       title: "Informationssysteme",
       children: [
         {
-          title: "1st Level",
+          title: "1. Was ist ein Informationssystem",
           children: [
             {
-              title: "Einführung in die verschiedenen Ebenen und Komponenten moderner Informationssysteme.",
+              title: "grundlegende Konzepte und Komponenten moderner Informationssysteme",
               children: [
-                {
-                  title: "Most detailed Level",
-                  children: [
-                    {
-                      title: "1. Was ist ein Informationssystem",
-                      children: [
-                        {
-                          title: "grundlegende Konzepte und Komponenten moderner Informationssysteme",
-                          children: [
-                            { title: "Linux" },
-                            { title: "Netzwerk" },
-                            { title: "Container" },
-                            { title: "Datenbank-Systeme" },
-                            { title: "Datenmanagement" }
-                          ]
-                        },
-                        {
-                          title: "verschiedene Ebenen moderner Informations- und Computersysteme verwenden und einordnen"
-                        }
-                      ]
-                    },
-                    {
-                      title: "2. Datenmanagement",
-                      children: [
-                        { title: "Informationen modellieren" },
-                        { title: "Datenbank zur Speicherung von Daten aufsetzen" },
-                        { title: "Daten aus einer Datenbank lesen" },
-                        { title: "Daten in die Datenbank einfügen und mutieren" }
-                      ]
-                    },
-                    {
-                      title: "3. Datenschutz und Datensicherheit",
-                      children: [
-                        { title: "Konzept des Datenschutzes" },
-                        { title: "Konzept der Datensicherheit" }
-                      ]
-                    },
-                    {
-                      title: "4. Informationssysteme in die Praxis umsetzen",
-                      children: [
-                        { title: "Informationssysteme konzipieren, aufbauen und betreiben" },
-                        { title: "Grundlagen aktueller Technologien für Informationssysteme verstehen" },
-                        { title: "Informationssysteme situationsgerecht für konkrete Aufgabenstellungen einsetzen" }
-                      ]
-                    }
-                  ]
-                }
+                { title: "Linux" },
+                { title: "Netzwerk" },
+                { title: "Container" },
+                { title: "Datenbank-Systeme" },
+                { title: "Datenmanagement" }
               ]
+            },
+            {
+              title: "verschiedene Ebenen moderner Informations- und Computersysteme verwenden und einordnen"
             }
+          ]
+        },
+        {
+          title: "2. Datenmanagement",
+          children: [
+            { title: "Informationen modellieren" },
+            { title: "Datenbank zur Speicherung von Daten aufsetzen" },
+            { title: "Daten aus einer Datenbank lesen" },
+            { title: "Daten in die Datenbank einfügen und mutieren" }
+          ]
+        },
+        {
+          title: "3. Datenschutz und Datensicherheit",
+          children: [
+            { title: "Konzept des Datenschutzes" },
+            { title: "Konzept der Datensicherheit" }
+          ]
+        },
+        {
+          title: "4. Informationssysteme in die Praxis umsetzen",
+          children: [
+            { title: "Informationssysteme konzipieren, aufbauen und betreiben" },
+            { title: "Grundlagen aktueller Technologien für Informationssysteme verstehen" },
+            { title: "Informationssysteme situationsgerecht für konkrete Aufgabenstellungen einsetzen" }
           ]
         }
       ]
@@ -197,4 +184,5 @@
     app.appendChild(createNode(data));
   </script>
 </body>
+
 </html>

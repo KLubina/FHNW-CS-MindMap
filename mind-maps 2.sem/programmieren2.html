@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -83,6 +84,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <h1>Programmieren 2</h1>
@@ -99,80 +101,65 @@
       title: "Programmieren 2",
       children: [
         {
-          title: "1st Level",
+          title: "Generische Programmierung",
+          children: [
+            { title: "von dynamischer Typisierung zu Typparametern" },
+            { title: "Vor- und Nachteile: statisch vs. dynamisch typisierte Sprachen" },
+            { title: "Techniken zur Kompensation der jeweiligen Nachteile anwenden" },
+            { title: "Generische Bausteine verstehen, sinnvoll einsetzen, teils selbst entwickeln" },
+            { title: "Konzepte generischer Collection-Frameworks verstehen" },
+            { title: "Eigenschaften und Implementationsaspekte wichtiger Collections kennen und anwenden" }
+          ]
+        },
+        {
+          title: "Funktionale Konzepte",
+          children: [
+            { title: "Callbacks" },
+            { title: "Funktionstypen" },
+            { title: "Lambda-Ausdrücke" },
+            { title: "Higher-Order Functions" }
+          ]
+        },
+        {
+          title: "Algebraische Datentypen & Pattern Matching",
+          children: [
+            { title: "Von Enumerations zu algebraischen Datentypen und Pattern Matching" },
+            { title: "Algebraische Datentypen (Produkt-/Summentypen) kennen" },
+            { title: "Eigene Typen entwerfen, implementieren und sinnvoll verwenden" }
+          ]
+        },
+        {
+          title: "Dynamische Datenstrukturen und Algorithmen",
           children: [
             {
-              title: "Programmieren auf höheren Abstraktionsstufen, dynamische Datenstrukturen und Umgang mit komplexen Bibliotheken und Frameworks.",
+              title: "Implementation dynamischer Datenstrukturen und einfacher Algorithmen",
               children: [
-                {
-                  title: "Most detailed Level",
-                  children: [
-                    {
-                      title: "Generische Programmierung",
-                      children: [
-                        { title: "von dynamischer Typisierung zu Typparametern" },
-                        { title: "Vor- und Nachteile: statisch vs. dynamisch typisierte Sprachen" },
-                        { title: "Techniken zur Kompensation der jeweiligen Nachteile anwenden" },
-                        { title: "Generische Bausteine verstehen, sinnvoll einsetzen, teils selbst entwickeln" },
-                        { title: "Konzepte generischer Collection-Frameworks verstehen" },
-                        { title: "Eigenschaften und Implementationsaspekte wichtiger Collections kennen und anwenden" }
-                      ]
-                    },
-                    {
-                      title: "Funktionale Konzepte",
-                      children: [
-                        { title: "Callbacks" },
-                        { title: "Funktionstypen" },
-                        { title: "Lambda-Ausdrücke" },
-                        { title: "Higher-Order Functions" }
-                      ]
-                    },
-                    {
-                      title: "Algebraische Datentypen & Pattern Matching",
-                      children: [
-                        { title: "Von Enumerations zu algebraischen Datentypen und Pattern Matching" },
-                        { title: "Algebraische Datentypen (Produkt-/Summentypen) kennen" },
-                        { title: "Eigene Typen entwerfen, implementieren und sinnvoll verwenden" }
-                      ]
-                    },
-                    {
-                      title: "Dynamische Datenstrukturen und Algorithmen",
-                      children: [
-                        {
-                          title: "Implementation dynamischer Datenstrukturen und einfacher Algorithmen",
-                          children: [
-                            { title: "verkettete Listen" },
-                            { title: "Bäume" },
-                            { title: "Graphen" }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      title: "Vererbung & Framework-Anwendungen",
-                      children: [
-                        { title: "Anwendungen von Vererbung (z. B. in GUI- oder Collections-Frameworks)" },
-                        { title: "Nutzen und Risiken von Vererbung verstehen; Alternativen kennen" },
-                        { title: "Vererbung bewusst und situationsgerecht einsetzen" }
-                      ]
-                    },
-                    {
-                      title: "Fehlerbehandlung",
-                      children: [
-                        { title: "Ausnahmebehandlung" }
-                      ]
-                    },
-                    {
-                      title: "Bibliotheken und Frameworks",
-                      children: [
-                        { title: "Aufbau und Verwendung komplexer Libraries und Frameworks" },
-                        { title: "Selbständige Einarbeitung; effektive Nutzung zur Entwicklung eigener Applikationen" }
-                      ]
-                    }
-                  ]
-                }
+                { title: "verkettete Listen" },
+                { title: "Bäume" },
+                { title: "Graphen" }
               ]
             }
+          ]
+        },
+        {
+          title: "Vererbung & Framework-Anwendungen",
+          children: [
+            { title: "Anwendungen von Vererbung (z. B. in GUI- oder Collections-Frameworks)" },
+            { title: "Nutzen und Risiken von Vererbung verstehen; Alternativen kennen" },
+            { title: "Vererbung bewusst und situationsgerecht einsetzen" }
+          ]
+        },
+        {
+          title: "Fehlerbehandlung",
+          children: [
+            { title: "Ausnahmebehandlung" }
+          ]
+        },
+        {
+          title: "Bibliotheken und Frameworks",
+          children: [
+            { title: "Aufbau und Verwendung komplexer Libraries und Frameworks" },
+            { title: "Selbständige Einarbeitung; effektive Nutzung zur Entwicklung eigener Applikationen" }
           ]
         }
       ]
@@ -217,4 +204,5 @@
     app.appendChild(createNode(data));
   </script>
 </body>
+
 </html>
