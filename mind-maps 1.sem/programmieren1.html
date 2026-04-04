@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -81,8 +82,30 @@
       font-weight: bold;
       margin: 0.5rem 0 0.2rem 0;
     }
+
+    .code-block {
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 0.6rem;
+      margin: 0.5rem 0 0.5rem 1.1rem;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.85em;
+      overflow-x: auto;
+      line-height: 1.4;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .code-label {
+      font-weight: bold;
+      color: #555;
+      margin: 0.4rem 0 0.2rem 1.1rem;
+      font-size: 0.9em;
+    }
   </style>
 </head>
+
 <body>
 
   <h1>Programmieren 1</h1>
@@ -107,9 +130,18 @@
                 {
                   title: "grundlegende Konzepte der Programmierung",
                   children: [
-                    { title: "Datentypen" },
-                    { title: "Variablen" },
-                    { title: "Methoden/Funktionen" }
+                    {
+                      title: "Datentypen",
+                      code: "int x = 5;\ndouble pi = 3.14;\nboolean flag = true;\nString text = \"Hallo\";\nchar letter = 'A';"
+                    },
+                    {
+                      title: "Variablen",
+                      code: "int alter = 25;\nString name = \"Alice\";\nint x = 10, y = 20;\ndouble result = x + y;"
+                    },
+                    {
+                      title: "Methoden/Funktionen",
+                      code: "public int add(int a, int b) {\n    return a + b;\n}\npublic void greet(String name) {\n    System.out.println(\n        \"Hallo \" + name);\n}"
+                    }
                   ]
                 },
                 {
@@ -118,21 +150,36 @@
                     {
                       title: "Objekt",
                       children: [
-                        { title: "Instanziierung" }
+                        {
+                          title: "Instanziierung",
+                          code: "class Car {\n    String color;\n}\nCar myCar = new Car();\nmyCar.color = \"rot\";"
+                        }
                       ]
                     },
                     {
                       title: "state vs. behaviour",
                       children: [
-                        { title: "state is usually stored in instance variables (fields)" },
-                        { title: "behavior is defined in methods" }
+                        {
+                          title: "state is usually stored in instance variables (fields)",
+                          code: "public class Person {\n    // State (Zustand)\n    private String name;\n    private int age;"
+                        },
+                        {
+                          title: "behavior is defined in methods",
+                          code: "public class Person {\n    // Behaviour (Verhalten)\n    public void speak() {\n        System.out.println(\n            \"Ich bin \" + name);\n    }\n}"
+                        }
                       ]
                     },
                     {
                       title: "Kapselung",
                       children: [
-                        { title: "public" },
-                        { title: "private" }
+                        {
+                          title: "public",
+                          code: "public class Example {\n    public String name;\n}\nExample ex = new Example();\nex.name = \"Test\"; // direkter Zugriff"
+                        },
+                        {
+                          title: "private",
+                          code: "public class Example {\n    private String name;\n    public void setName(String n) {\n        this.name = n;\n    }\n}"
+                        }
                       ]
                     },
                     { title: "Abstraktion" },
@@ -144,8 +191,14 @@
                   title: "OOP-Grundbausteine",
                   children: [
                     { title: "Objekte" },
-                    { title: "Referenzen" },
-                    { title: "Klassen" }
+                    {
+                      title: "Referenzen",
+                      code: "Person p1 = new Person();\nPerson p2 = p1; // gleiche Referenz\np1.name = \"Alice\";\nSystem.out.println(p2.name);"
+                    },
+                    {
+                      title: "Klassen",
+                      code: "public class Cat {\n    private String name;\n    private int age;\n    public Cat(String n, int a) {\n        this.name = n;\n        this.age = a;\n    }\n}"
+                    }
                   ]
                 },
                 {
@@ -178,10 +231,19 @@
                 {
                   title: "Collections",
                   children: [
-                    { title: "List" },
-                    { title: "Set" },
+                    {
+                      title: "List",
+                      code: "List<String> names = \n    new ArrayList<>();\nnames.add(\"Alice\");\nnames.add(\"Bob\");\nSystem.out.println(names.get(0));"
+                    },
+                    {
+                      title: "Set",
+                      code: "Set<Integer> numbers = \n    new HashSet<>();\nnumbers.add(1);\nnumbers.add(1);\nSystem.out.println(numbers);"
+                    },
                     { title: "Queue" },
-                    { title: "Map" }
+                    {
+                      title: "Map",
+                      code: "Map<String, Integer> ages = \n    new HashMap<>();\nages.put(\"Alice\", 25);\nages.put(\"Bob\", 30);\nSystem.out.println(ages.get(\"Alice\"));"
+                    }
                   ]
                 },
                 { title: "Programmiermuster" },
@@ -194,16 +256,31 @@
                         {
                           title: "Suchalgorithmen",
                           children: [
-                            { title: "Linear Search" },
-                            { title: "Binary Search" }
+                            {
+                              title: "Linear Search",
+                              code: "for (int i = 0; i < array.length; i++) {\n    if (array[i] == target) {\n        return i;\n    }\n}\nreturn -1;"
+                            },
+                            {
+                              title: "Binary Search",
+                              code: "int left = 0, right = n - 1;\nwhile (left <= right) {\n    int mid = (left + right) / 2;\n    if (array[mid] == target)\n        return mid;\n    else if (array[mid] < target)\n        left = mid + 1;\n    else\n        right = mid - 1;\n}\nreturn -1;"
+                            }
                           ]
                         },
                         {
                           title: "Sortieralgorithmen",
                           children: [
-                            { title: "Bubble Sort" },
-                            { title: "Insertion Sort" },
-                            { title: "Selection Sort" },
+                            {
+                              title: "Bubble Sort",
+                              code: "for (int i = 0; i < n - 1; i++) {\n    for (int j = 0; j < n - i - 1; j++) {\n        if (array[j] > array[j + 1]) {\n            int temp = array[j];\n            array[j] = array[j + 1];\n            array[j + 1] = temp;\n        }\n    }\n}"
+                            },
+                            {
+                              title: "Insertion Sort",
+                              code: "for (int i = 1; i < n; i++) {\n    int key = array[i];\n    int j = i - 1;\n    while (j >= 0 && \n           array[j] > key) {\n        array[j + 1] = array[j];\n        j--;\n    }\n    array[j + 1] = key;\n}"
+                            },
+                            {
+                              title: "Selection Sort",
+                              code: "for (int i = 0; i < n - 1; i++) {\n    int minIdx = i;\n    for (int j = i + 1; j < n; j++) {\n        if (array[j] < array[minIdx])\n            minIdx = j;\n    }\n    int temp = array[i];\n    array[i] = array[minIdx];\n    array[minIdx] = temp;\n}"
+                            },
                             { title: "Merge Sort" },
                             { title: "Quick Sort" }
                           ]
@@ -224,7 +301,10 @@
                     { title: "O(n!) / Fakultät" }
                   ]
                 },
-                { title: "Rekursion" },
+                {
+                  title: "Rekursion",
+                  code: "public int factorial(int n) {\n    if (n <= 1)\n        return 1;\n    return n * factorial(n - 1);\n}\npublic void countdown(int n) {\n    if (n == 0) return;\n    System.out.println(n);\n    countdown(n - 1);\n}"
+                },
                 { title: "schliesslich in einer Programmiersprache formulieren." }
               ]
             },
@@ -252,8 +332,14 @@
                 {
                   title: "Exceptions",
                   children: [
-                    { title: "try catch (finally)" },
-                    { title: "throws" }
+                    {
+                      title: "try catch (finally)",
+                      code: "try {\n    int result = 10 / 0;\n} catch (ArithmeticException e) {\n    System.out.println(\n        \"Fehler: \" + e);\n} finally {\n    System.out.println(\"Fertig\");\n}"
+                    },
+                    {
+                      title: "throws",
+                      code: "public void readFile(String file)\n    throws IOException {\n    FileReader fr = \n        new FileReader(file);\n    fr.close();\n}"
+                    }
                   ]
                 },
                 { title: "Clean-Code" },
@@ -279,6 +365,7 @@
       node.className = "node";
 
       const hasChildren = Array.isArray(nodeData.children) && nodeData.children.length > 0;
+      const hasCode = nodeData.code && nodeData.code.length > 0;
 
       if (hasChildren) {
         const title = document.createElement("div");
@@ -287,6 +374,18 @@
 
         const content = document.createElement("div");
         content.className = "content";
+
+        if (hasCode) {
+          const codeLabel = document.createElement("div");
+          codeLabel.className = "code-label";
+          codeLabel.textContent = "Beispiel:";
+          content.appendChild(codeLabel);
+
+          const codeBlock = document.createElement("div");
+          codeBlock.className = "code-block";
+          codeBlock.textContent = nodeData.code;
+          content.appendChild(codeBlock);
+        }
 
         nodeData.children.forEach(child => {
           content.appendChild(createNode(child));
@@ -300,10 +399,37 @@
         node.appendChild(title);
         node.appendChild(content);
       } else {
-        const leaf = document.createElement("div");
-        leaf.className = "leaf";
-        leaf.textContent = nodeData.title;
-        node.appendChild(leaf);
+        if (hasCode) {
+          const titleDiv = document.createElement("div");
+          titleDiv.className = "title";
+          titleDiv.textContent = nodeData.title;
+
+          const content = document.createElement("div");
+          content.className = "content";
+
+          const codeLabel = document.createElement("div");
+          codeLabel.className = "code-label";
+          codeLabel.textContent = "Beispiel:";
+          content.appendChild(codeLabel);
+
+          const codeBlock = document.createElement("div");
+          codeBlock.className = "code-block";
+          codeBlock.textContent = nodeData.code;
+          content.appendChild(codeBlock);
+
+          titleDiv.addEventListener("click", () => {
+            content.classList.toggle("open");
+            titleDiv.classList.toggle("open");
+          });
+
+          node.appendChild(titleDiv);
+          node.appendChild(content);
+        } else {
+          const leaf = document.createElement("div");
+          leaf.className = "leaf";
+          leaf.textContent = nodeData.title;
+          node.appendChild(leaf);
+        }
       }
 
       return node;
@@ -313,4 +439,5 @@
     app.appendChild(createNode(data));
   </script>
 </body>
+
 </html>
