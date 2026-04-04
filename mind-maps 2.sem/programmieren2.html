@@ -82,6 +82,27 @@
       font-weight: bold;
       margin: 0.5rem 0 0.2rem 0;
     }
+
+    .code-block {
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 0.6rem;
+      margin: 0.5rem 0 0.5rem 1.1rem;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.85em;
+      overflow-x: auto;
+      line-height: 1.4;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .code-label {
+      font-weight: bold;
+      color: #555;
+      margin: 0.4rem 0 0.2rem 1.1rem;
+      font-size: 0.9em;
+    }
   </style>
 </head>
 
@@ -103,40 +124,88 @@
         {
           title: "Generische Programmierung",
           children: [
-            { title: "von dynamischer Typisierung zu Typparametern" },
-            { title: "Vor- und Nachteile: statisch vs. dynamisch typisierte Sprachen" },
-            { title: "Techniken zur Kompensation der jeweiligen Nachteile anwenden" },
-            { title: "Generische Bausteine verstehen, sinnvoll einsetzen, teils selbst entwickeln" },
-            { title: "Konzepte generischer Collection-Frameworks verstehen" },
-            { title: "Eigenschaften und Implementationsaspekte wichtiger Collections kennen und anwenden" }
+            {
+              title: "Von dynamischer Typisierung zu Typparametern",
+              code: "// Ohne Generics\nList list = new ArrayList();\nlist.add(\"Hello\");\nString s = (String) list.get(0);\n\n// Mit Generics\nList<String> listGeneric = new ArrayList<>();\nlistGeneric.add(\"Hello\");\nString sGeneric = listGeneric.get(0);"
+            },
+            {
+              title: "Vor- und Nachteile: statisch vs. dynamisch typisierte Sprachen",
+              code: "// Java (statisch typisiert)\nint x = 5;\n// x = \"Hello\"; // Compilerfehler\n\n// Python (dynamisch typisiert)\nx = 5\nx = \"Hello\"  # erlaubt"
+            },
+            {
+              title: "Techniken zur Kompensation der jeweiligen Nachteile",
+              code: "Optional<String> maybeName = \n    Optional.ofNullable(getName());\nmaybeName.ifPresent(\n    System.out::println);"
+            },
+            {
+              title: "Generische Bausteine verstehen, sinnvoll einsetzen",
+              code: "public class Box<T> {\n    private T content;\n    public void set(T content) { \n        this.content = content; \n    }\n    public T get() { return content; }\n}\nBox<Integer> intBox = new Box<>();\nintBox.set(42);\nSystem.out.println(intBox.get());"
+            },
+            {
+              title: "Konzepte generischer Collection-Frameworks",
+              code: "List<String> names = Arrays.asList(\n    \"Alice\", \"Bob\", \"Charlie\");\nMap<String, Integer> ages = new HashMap<>();\nages.put(\"Alice\", 25);"
+            },
+            {
+              title: "Eigenschaften wichtiger Collections",
+              code: "Set<Integer> uniqueNumbers = \n    new HashSet<>();\nuniqueNumbers.add(1);\nuniqueNumbers.add(1);\nSystem.out.println(uniqueNumbers);"
+            }
           ]
         },
         {
           title: "Funktionale Konzepte",
           children: [
-            { title: "Callbacks" },
-            { title: "Funktionstypen" },
-            { title: "Lambda-Ausdrücke" },
-            { title: "Higher-Order Functions" }
+            {
+              title: "Callbacks",
+              code: "public void doSomething(Runnable c) {\n    System.out.println(\"Arbeit\");\n    c.run();\n}\ndoSomething(() -> \n    System.out.println(\"Fertig!\"));"
+            },
+            {
+              title: "Funktionstypen",
+              code: "Function<Integer, String> intToString = \n    i -> \"Nummer: \" + i;\nSystem.out.println(\n    intToString.apply(5));"
+            },
+            {
+              title: "Lambda-Ausdrücke",
+              code: "List<String> names = Arrays.asList(\n    \"Alice\", \"Bob\", \"Charlie\");\nnames.forEach(name -> \n    System.out.println(\n        name.toUpperCase()));"
+            },
+            {
+              title: "Higher-Order Functions",
+              code: "public static List<Integer> map(\n    List<Integer> list, \n    Function<Integer, Integer> f) {\n    List<Integer> result = new ArrayList<>();\n    for (Integer i : list) \n        result.add(f.apply(i));\n    return result;\n}\nList<Integer> numbers = Arrays.asList(1,2,3);\nList<Integer> squared = map(numbers, x -> x*x);"
+            }
           ]
         },
         {
           title: "Algebraische Datentypen & Pattern Matching",
           children: [
-            { title: "Von Enumerations zu algebraischen Datentypen und Pattern Matching" },
-            { title: "Algebraische Datentypen (Produkt-/Summentypen) kennen" },
-            { title: "Eigene Typen entwerfen, implementieren und sinnvoll verwenden" }
+            {
+              title: "Von Enumerations zu algebraischen Datentypen",
+              code: "enum ShapeType { CIRCLE, RECTANGLE }\nclass Shape {\n    ShapeType type;\n    double radius;\n    double width, height;\n    Shape(double r) { \n        this.type = ShapeType.CIRCLE; \n        this.radius = r; \n    }\n}"
+            },
+            {
+              title: "Algebraische Datentypen (Produkt-/Summentypen)",
+              code: "abstract class Result {}\nclass Success extends Result {\n    String data;\n    Success(String d) { this.data = d; }\n}\nclass Failure extends Result {\n    String error;\n    Failure(String e) { this.error = e; }\n}\nResult r = new Success(\"OK\");\nif (r instanceof Success s)\n    System.out.println(s.data);"
+            },
+            {
+              title: "Eigene Typen entwerfen",
+              code: "record Point(int x, int y) {}\nPoint p = new Point(3, 4);\nSystem.out.println(\n    p.x() + \", \" + p.y());"
+            }
           ]
         },
         {
           title: "Dynamische Datenstrukturen und Algorithmen",
           children: [
             {
-              title: "Implementation dynamischer Datenstrukturen und einfacher Algorithmen",
+              title: "Implementation dynamischer Datenstrukturen",
               children: [
-                { title: "verkettete Listen" },
-                { title: "Bäume" },
-                { title: "Graphen" }
+                {
+                  title: "Verkettete Listen",
+                  code: "class Node {\n    int value;\n    Node next;\n    Node(int v) { this.value = v; }\n}\nNode head = new Node(1);\nhead.next = new Node(2);\nhead.next.next = new Node(3);"
+                },
+                {
+                  title: "Bäume",
+                  code: "class TreeNode {\n    int value;\n    TreeNode left, right;\n    TreeNode(int v) { this.value = v; }\n}\nTreeNode root = new TreeNode(10);\nroot.left = new TreeNode(5);\nroot.right = new TreeNode(15);"
+                },
+                {
+                  title: "Graphen",
+                  code: "Map<String, List<String>> graph = \n    new HashMap<>();\ngraph.put(\"A\", Arrays.asList(\"B\",\"C\"));\ngraph.put(\"B\", Arrays.asList(\"D\"));\ngraph.put(\"C\", Arrays.asList(\"D\"));\ngraph.put(\"D\", Arrays.asList());"
+                }
               ]
             }
           ]
@@ -144,7 +213,7 @@
         {
           title: "Vererbung & Framework-Anwendungen",
           children: [
-            { title: "Anwendungen von Vererbung (z. B. in GUI- oder Collections-Frameworks)" },
+            { title: "Anwendungen von Vererbung (z. B. GUI- oder Collections-Frameworks)" },
             { title: "Nutzen und Risiken von Vererbung verstehen; Alternativen kennen" },
             { title: "Vererbung bewusst und situationsgerecht einsetzen" }
           ]
@@ -170,6 +239,7 @@
       node.className = "node";
 
       const hasChildren = Array.isArray(nodeData.children) && nodeData.children.length > 0;
+      const hasCode = nodeData.code && nodeData.code.length > 0;
 
       if (hasChildren) {
         const title = document.createElement("div");
@@ -178,6 +248,18 @@
 
         const content = document.createElement("div");
         content.className = "content";
+
+        if (hasCode) {
+          const codeLabel = document.createElement("div");
+          codeLabel.className = "code-label";
+          codeLabel.textContent = "Beispiel:";
+          content.appendChild(codeLabel);
+
+          const codeBlock = document.createElement("div");
+          codeBlock.className = "code-block";
+          codeBlock.textContent = nodeData.code;
+          content.appendChild(codeBlock);
+        }
 
         nodeData.children.forEach(child => {
           content.appendChild(createNode(child));
@@ -191,10 +273,37 @@
         node.appendChild(title);
         node.appendChild(content);
       } else {
-        const leaf = document.createElement("div");
-        leaf.className = "leaf";
-        leaf.textContent = nodeData.title;
-        node.appendChild(leaf);
+        if (hasCode) {
+          const titleDiv = document.createElement("div");
+          titleDiv.className = "title";
+          titleDiv.textContent = nodeData.title;
+
+          const content = document.createElement("div");
+          content.className = "content";
+
+          const codeLabel = document.createElement("div");
+          codeLabel.className = "code-label";
+          codeLabel.textContent = "Beispiel:";
+          content.appendChild(codeLabel);
+
+          const codeBlock = document.createElement("div");
+          codeBlock.className = "code-block";
+          codeBlock.textContent = nodeData.code;
+          content.appendChild(codeBlock);
+
+          titleDiv.addEventListener("click", () => {
+            content.classList.toggle("open");
+            titleDiv.classList.toggle("open");
+          });
+
+          node.appendChild(titleDiv);
+          node.appendChild(content);
+        } else {
+          const leaf = document.createElement("div");
+          leaf.className = "leaf";
+          leaf.textContent = nodeData.title;
+          node.appendChild(leaf);
+        }
       }
 
       return node;
