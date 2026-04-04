@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diskrete Mathematik & Theoretische Informatik – Lernmodul</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+      margin: 20px;
+      color: #222;
+      background: #fff;
+    }
+
+    h1 {
+      margin-bottom: 0.3rem;
+    }
+
+    a {
+      color: #0a66c2;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .node {
+      margin-left: 1rem;
+      border-left: 2px solid #ddd;
+      padding-left: 0.75rem;
+      margin-top: 0.35rem;
+    }
+
+    .title {
+      cursor: pointer;
+      background: #f0f8ff;
+      padding: 0.4rem 0.6rem;
+      margin: 0.2rem 0;
+      border-radius: 6px;
+      user-select: none;
+      display: inline-block;
+      min-width: 240px;
+    }
+
+    .title:hover {
+      background: #e0eaff;
+    }
+
+    .title::before {
+      content: "▶ ";
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .title.open::before {
+      content: "▼ ";
+    }
+
+    .content {
+      display: none;
+      margin-top: 0.35rem;
+    }
+
+    .content.open {
+      display: block;
+    }
+
+    .leaf {
+      margin: 0.2rem 0 0.2rem 1.1rem;
+      padding: 0.15rem 0;
+    }
+
+    .meta {
+      margin-left: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-label {
+      font-weight: bold;
+      margin: 0.5rem 0 0.2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Diskrete Mathematik & Theoretische Informatik</h1>
+  <div class="meta">
+    <a href="#" target="_blank" rel="noopener noreferrer">
+      Modullink
+    </a>
+  </div>
+
+  <div id="app"></div>
+
+  <script>
+    const data = {
+      title: "Most detailed Level",
+      children: [
+        {
+          title: "Diskrete Mathematik",
+          children: [
+            {
+              title: "Mengen und Operationen auf Mengen",
+              children: [
+                { title: "wissen, was eine Menge ist" },
+                {
+                  title: "können die wichtigsten Operationen auf Mengen durchführen",
+                  children: [
+                    { title: "Schnitt" },
+                    { title: "Vereinigung" },
+                    { title: "Differenz" },
+                    { title: "Potenzmengenbildung" },
+                    { title: "kartesisches Produkt" }
+                  ]
+                }
+              ]
+            },
+            {
+              title: "Relationen, Funktionen und Graphen",
+              children: [
+                {
+                  title: "Relationen",
+                  children: [
+                    { title: "verstehen den Begriff der Relation" },
+                    {
+                      title: "Relation auf folgendes untersuchen",
+                      children: [
+                        { title: "Reflexivität" },
+                        { title: "Symmetrie" },
+                        { title: "Transitivität" },
+                        { title: "Antisymmetrie" }
+                      ]
+                    },
+                    { title: "können die Komposition zweier Relationen bestimmen" }
+                  ]
+                },
+                {
+                  title: "Äquivalenz- und Ordnungsrelationen",
+                  children: [
+                    { title: "kennen Äquivalenzrelationen" },
+                    { title: "kennen Ordnungsrelationen" },
+                    { title: "verstehen den Zusammenhang zwischen Äquivalenzrelationen und Partitionen" }
+                  ]
+                },
+                {
+                  title: "Funktionen und ihre Eigenschaften",
+                  children: [
+                    {
+                      title: "können (totale/partielle) Funktionen untersuchen auf",
+                      children: [
+                        { title: "Injektivität" },
+                        { title: "Surjektivität" },
+                        { title: "Bijektivität" }
+                      ]
+                    },
+                    { title: "können gegebenenfalls die Umkehrfunktion bestimmen" }
+                  ]
+                },
+                {
+                  title: "Eigenschaften von Graphen",
+                  children: [
+                    { title: "kennen die wichtigsten Eigenschaften von (un)gerichteten Graphen" },
+                    { title: "sind in der Lage, Probleme aus der Praxis mit Hilfe von Graphen zu modellieren" }
+                  ]
+                },
+                { title: "Modellierung mit Graphen" }
+              ]
+            },
+            {
+              title: "Logik",
+              children: [
+                {
+                  title: "Aussagenlogik",
+                  children: [
+                    { title: "wissen, was eine Aussage ist" },
+                    {
+                      title: "können den Wahrheitsgehalt von zusammengesetzten Aussagen berechnen",
+                      children: [
+                        { title: "Disjunktion" },
+                        { title: "Konjunktion" },
+                        { title: "Negation" },
+                        { title: "Implikation" },
+                        { title: "Äquivalenz" }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  title: "Existenz- und Allquantoren",
+                  children: [
+                    { title: "kennen den Existenz- und den Allquantor" },
+                    { title: "können den Wahrheitsgehalt quantifizierter Aussagen bestimmen" }
+                  ]
+                }
+              ]
+            },
+            {
+              title: "Induktion und Rekursion",
+              children: [
+                {
+                  title: "Induktion",
+                  children: [
+                    { title: "verstehen das Prinzip der vollständigen Induktion" },
+                    { title: "sind in der Lage, Induktionsbeweise zu führen" }
+                  ]
+                },
+                {
+                  title: "Rekursion",
+                  children: [
+                    { title: "können lineare homogene Rekursionsgleichungen (bis zum Grad 2) lösen" },
+                    { title: "können einfache inhomogene Rekursionsgleichungen (bis zum Grad 2) lösen" },
+                    { title: "können durch Variablentransformation Rekursionsgleichungen erhalten" },
+                    { title: "können diese lösen; solche Gleichungen treten häufig in der Algorithmusanalyse auf" }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          title: "Einführung in die theoretische Informatik",
+          children: [
+            {
+              title: "Produktionsgrammatiken",
+              children: [
+                { title: "verstehen Grammatiken und wie man mit ihnen formale Sprachen beschreibt" }
+              ]
+            },
+            {
+              title: "Chomsky-Hierarchie",
+              children: [
+                { title: "können Grammatiken und Sprachen gemäss der Chomsky-Hierarchie klassifizieren" }
+              ]
+            },
+            {
+              title: "Endliche Automaten",
+              children: [
+                { title: "wissen, was ein DFA ist" },
+                { title: "kennen den Zusammenhang zu den regulären Sprachen" },
+                { title: "können zu ausgewählten regulären Sprachen einen DFA konstruieren" }
+              ]
+            },
+            { title: "Endliche Automaten und reguläre Sprachen" }
+          ]
+        }
+      ]
+    };
+
+    function createNode(nodeData) {
+      const node = document.createElement("div");
+      node.className = "node";
+
+      const hasChildren = Array.isArray(nodeData.children) && nodeData.children.length > 0;
+
+      if (hasChildren) {
+        const title = document.createElement("div");
+        title.className = "title";
+        title.textContent = nodeData.title;
+
+        const content = document.createElement("div");
+        content.className = "content";
+
+        nodeData.children.forEach(child => {
+          content.appendChild(createNode(child));
+        });
+
+        title.addEventListener("click", () => {
+          content.classList.toggle("open");
+          title.classList.toggle("open");
+        });
+
+        node.appendChild(title);
+        node.appendChild(content);
+      } else {
+        const leaf = document.createElement("div");
+        leaf.className = "leaf";
+        leaf.textContent = nodeData.title;
+        node.appendChild(leaf);
+      }
+
+      return node;
+    }
+
+    const app = document.getElementById("app");
+    app.appendChild(createNode(data));
+  </script>
+</body>
+</html>

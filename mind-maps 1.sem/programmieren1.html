@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programmieren 1 – Lernmodul</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+      margin: 20px;
+      color: #222;
+      background: #fff;
+    }
+
+    h1 {
+      margin-bottom: 0.3rem;
+    }
+
+    a {
+      color: #0a66c2;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .node {
+      margin-left: 1rem;
+      border-left: 2px solid #ddd;
+      padding-left: 0.75rem;
+      margin-top: 0.35rem;
+    }
+
+    .title {
+      cursor: pointer;
+      background: #f0f8ff;
+      padding: 0.4rem 0.6rem;
+      margin: 0.2rem 0;
+      border-radius: 6px;
+      user-select: none;
+      display: inline-block;
+      min-width: 240px;
+    }
+
+    .title:hover {
+      background: #e0eaff;
+    }
+
+    .title::before {
+      content: "▶ ";
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .title.open::before {
+      content: "▼ ";
+    }
+
+    .content {
+      display: none;
+      margin-top: 0.35rem;
+    }
+
+    .content.open {
+      display: block;
+    }
+
+    .leaf {
+      margin: 0.2rem 0 0.2rem 1.1rem;
+      padding: 0.15rem 0;
+    }
+
+    .meta {
+      margin-left: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-label {
+      font-weight: bold;
+      margin: 0.5rem 0 0.2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Programmieren 1</h1>
+  <div class="meta">
+    <a href="https://www.fhnw.ch/de/studium/module/9794369" target="_blank" rel="noopener noreferrer">
+      Modullink
+    </a>
+  </div>
+
+  <div id="app"></div>
+
+  <script>
+    const data = {
+      title: "Programmieren 1",
+      children: [
+        {
+          title: "Systematisch Programme zum Lösen von Problemen entwickeln.",
+          children: [
+            {
+              title: "objektorientierte Programmierung",
+              children: [
+                {
+                  title: "grundlegende Konzepte der Programmierung",
+                  children: [
+                    { title: "Datentypen" },
+                    { title: "Variablen" },
+                    { title: "Methoden/Funktionen" }
+                  ]
+                },
+                {
+                  title: "grundlegende Konzepte des OOP",
+                  children: [
+                    {
+                      title: "Objekt",
+                      children: [
+                        { title: "Instanziierung" }
+                      ]
+                    },
+                    {
+                      title: "state vs. behaviour",
+                      children: [
+                        { title: "state is usually stored in instance variables (fields)" },
+                        { title: "behavior is defined in methods" }
+                      ]
+                    },
+                    {
+                      title: "Kapselung",
+                      children: [
+                        { title: "public" },
+                        { title: "private" }
+                      ]
+                    },
+                    { title: "Abstraktion" },
+                    { title: "Vererbung" }
+                  ]
+                },
+                { title: "Best-Practices der OOP" },
+                {
+                  title: "OOP-Grundbausteine",
+                  children: [
+                    { title: "Objekte" },
+                    { title: "Referenzen" },
+                    { title: "Klassen" }
+                  ]
+                },
+                {
+                  title: "OOP-Softwaredesign",
+                  children: [
+                    { title: "Packages" },
+                    { title: "Sichtbarkeit" },
+                    { title: "Interfaces" },
+                    { title: "Polymorphie" }
+                  ]
+                }
+              ]
+            },
+            {
+              title: "Probleme mittels Programmierung lösen",
+              children: [
+                { title: "Probleme analysieren" },
+                { title: "Problem beschreiben" },
+                {
+                  title: "mit Techniken ein Lösungsverfahren finden",
+                  children: [
+                    {
+                      title: "Fortgeschrittene Problemlösetechniken",
+                      children: [
+                        { title: "wie Stepwise Refinement" }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  title: "Collections",
+                  children: [
+                    { title: "List" },
+                    { title: "Set" },
+                    { title: "Queue" },
+                    { title: "Map" }
+                  ]
+                },
+                { title: "Programmiermuster" },
+                {
+                  title: "Standardalgorithmen",
+                  children: [
+                    {
+                      title: "Ausgewählte Such- und Sortieralgorithmen für Arrays",
+                      children: [
+                        {
+                          title: "Suchalgorithmen",
+                          children: [
+                            { title: "Linear Search" },
+                            { title: "Binary Search" }
+                          ]
+                        },
+                        {
+                          title: "Sortieralgorithmen",
+                          children: [
+                            { title: "Bubble Sort" },
+                            { title: "Insertion Sort" },
+                            { title: "Selection Sort" },
+                            { title: "Merge Sort" },
+                            { title: "Quick Sort" }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  title: "Laufzeit- und Speicherplatzanalyse, O-Notation",
+                  children: [
+                    { title: "O(1) / konstant" },
+                    { title: "O(log n) / logarithmisch" },
+                    { title: "O(n) / linear" },
+                    { title: "O(n log n) / loglinear" },
+                    { title: "O(n^2) / quadratisch" },
+                    { title: "O(2^n) / exponentiell" },
+                    { title: "O(n!) / Fakultät" }
+                  ]
+                },
+                { title: "Rekursion" },
+                { title: "schliesslich in einer Programmiersprache formulieren." }
+              ]
+            },
+            {
+              title: "vorgegebene Programme verstehen",
+              children: [
+                { title: "Programme lesen" },
+                { title: "Programme analysieren" },
+                { title: "Programme nachvollziehen" },
+                { title: "die Sinnhaftigkeit von Programme erklären" },
+                { title: "Programme in Frage stellen" },
+                { title: "grundlegende Muster und Algorithmen erkennen" }
+              ]
+            },
+            {
+              title: "Code-Qualität",
+              children: [
+                { title: "Vor- und Nachbedingungen" },
+                {
+                  title: "Invarianten",
+                  children: [
+                    { title: "Eine Invariante ist eine Regel, die immer gültig bleiben muss" }
+                  ]
+                },
+                {
+                  title: "Exceptions",
+                  children: [
+                    { title: "try catch (finally)" },
+                    { title: "throws" }
+                  ]
+                },
+                { title: "Clean-Code" },
+                { title: "Testing-Grundlagen" }
+              ]
+            },
+            {
+              title: "visuelle Darstellungen",
+              children: [
+                { title: "Objektdiagramme" },
+                { title: "Klassendiagramme" },
+                { title: "Sequenzdiagramme" }
+              ]
+            },
+            { title: "Selbstständig nach Umsetzungsmöglichkeiten recherchieren." }
+          ]
+        }
+      ]
+    };
+
+    function createNode(nodeData) {
+      const node = document.createElement("div");
+      node.className = "node";
+
+      const hasChildren = Array.isArray(nodeData.children) && nodeData.children.length > 0;
+
+      if (hasChildren) {
+        const title = document.createElement("div");
+        title.className = "title";
+        title.textContent = nodeData.title;
+
+        const content = document.createElement("div");
+        content.className = "content";
+
+        nodeData.children.forEach(child => {
+          content.appendChild(createNode(child));
+        });
+
+        title.addEventListener("click", () => {
+          content.classList.toggle("open");
+          title.classList.toggle("open");
+        });
+
+        node.appendChild(title);
+        node.appendChild(content);
+      } else {
+        const leaf = document.createElement("div");
+        leaf.className = "leaf";
+        leaf.textContent = nodeData.title;
+        node.appendChild(leaf);
+      }
+
+      return node;
+    }
+
+    const app = document.getElementById("app");
+    app.appendChild(createNode(data));
+  </script>
+</body>
+</html>

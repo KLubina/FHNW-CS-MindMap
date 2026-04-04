@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Engineering – Lernmodul</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+      margin: 20px;
+      color: #222;
+      background: #fff;
+    }
+
+    h1 {
+      margin-bottom: 0.3rem;
+    }
+
+    a {
+      color: #0a66c2;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .node {
+      margin-left: 1rem;
+      border-left: 2px solid #ddd;
+      padding-left: 0.75rem;
+      margin-top: 0.35rem;
+    }
+
+    .title {
+      cursor: pointer;
+      background: #f0f8ff;
+      padding: 0.4rem 0.6rem;
+      margin: 0.2rem 0;
+      border-radius: 6px;
+      user-select: none;
+      display: inline-block;
+      min-width: 240px;
+    }
+
+    .title:hover {
+      background: #e0eaff;
+    }
+
+    .title::before {
+      content: "▶ ";
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .title.open::before {
+      content: "▼ ";
+    }
+
+    .content {
+      display: none;
+      margin-top: 0.35rem;
+    }
+
+    .content.open {
+      display: block;
+    }
+
+    .leaf {
+      margin: 0.2rem 0 0.2rem 1.1rem;
+      padding: 0.15rem 0;
+    }
+
+    .meta {
+      margin-left: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-label {
+      font-weight: bold;
+      margin: 0.5rem 0 0.2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>System Engineering</h1>
+  <div class="meta">
+    <a href="https://www.fhnw.ch/de/studium/module/9797596" target="_blank" rel="noopener noreferrer">
+      Modullink
+    </a>
+  </div>
+
+  <div id="app"></div>
+
+  <script>
+    const data = {
+      title: "System Engineering",
+      children: [
+        {
+          title: "1st Level",
+          children: [
+            {
+              title: "Computersysteme vollumfänglich zu installieren und administrieren zu können.",
+              children: [
+                {
+                  title: "Most detailed Level",
+                  children: [
+                    {
+                      title: "Betriebssysteme",
+                      children: [
+                        { title: "Konzeptionelle Grundlagen und Komponenten moderner Computersysteme werden verstanden" }
+                      ]
+                    },
+                    {
+                      title: "Administration",
+                      children: [
+                        { title: "Die Studierenden können sicher Server installieren und administrieren" },
+                        { title: "Beispiel Linux" }
+                      ]
+                    },
+                    {
+                      title: "Automatisierung",
+                      children: [
+                        {
+                          title: "Scripte und Befehle zur erweiterten Systemadministration und zur Automatisierung können angewendet werden",
+                          children: [
+                            { title: "bspw. Prozesse" },
+                            { title: "Services" },
+                            { title: "Usermanagement" }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      title: "Sicherheit",
+                      children: [
+                        {
+                          title: "Verschiedene anwendbare Sicherheitsmechanismen für Systeme wie",
+                          children: [
+                            { title: "SSL" },
+                            { title: "SSH" },
+                            { title: "Hashing können angewendet werden." }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      title: "Netzwerk",
+                      children: [
+                        {
+                          title: "Verstehen von Computernetzwerken",
+                          children: [
+                            { title: "bspw. IP-Adressen" },
+                            { title: "DNS" },
+                            { title: "Router" },
+                            { title: "Subnetting" },
+                            { title: "OSI-Layer" },
+                            { title: "Protokolle (TCP/UDP/QUIC)" },
+                            { title: "VLANs" },
+                            { title: "DHCP" },
+                            { title: "IPv6" },
+                            { title: "NAT" },
+                            { title: "Basic Firewall" }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      title: "Datenspeicherung",
+                      children: [
+                        { title: "File" },
+                        { title: "Block" },
+                        { title: "Filesysteme, etc." }
+                      ]
+                    },
+                    {
+                      title: "Containerisierung",
+                      children: [
+                        { title: "Anwenden von Containerisierungslösungen zum Bereitstellen von verschiedenen Services" }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+
+    function createNode(nodeData) {
+      const node = document.createElement("div");
+      node.className = "node";
+
+      const hasChildren = Array.isArray(nodeData.children) && nodeData.children.length > 0;
+
+      if (hasChildren) {
+        const title = document.createElement("div");
+        title.className = "title";
+        title.textContent = nodeData.title;
+
+        const content = document.createElement("div");
+        content.className = "content";
+
+        nodeData.children.forEach(child => {
+          content.appendChild(createNode(child));
+        });
+
+        title.addEventListener("click", () => {
+          content.classList.toggle("open");
+          title.classList.toggle("open");
+        });
+
+        node.appendChild(title);
+        node.appendChild(content);
+      } else {
+        const leaf = document.createElement("div");
+        leaf.className = "leaf";
+        leaf.textContent = nodeData.title;
+        node.appendChild(leaf);
+      }
+
+      return node;
+    }
+
+    const app = document.getElementById("app");
+    app.appendChild(createNode(data));
+  </script>
+</body>
+</html>

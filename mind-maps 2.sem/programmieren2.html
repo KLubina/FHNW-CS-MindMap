@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programmieren 2 – Lernmodul</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+      margin: 20px;
+      color: #222;
+      background: #fff;
+    }
+
+    h1 {
+      margin-bottom: 0.3rem;
+    }
+
+    a {
+      color: #0a66c2;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .node {
+      margin-left: 1rem;
+      border-left: 2px solid #ddd;
+      padding-left: 0.75rem;
+      margin-top: 0.35rem;
+    }
+
+    .title {
+      cursor: pointer;
+      background: #f0f8ff;
+      padding: 0.4rem 0.6rem;
+      margin: 0.2rem 0;
+      border-radius: 6px;
+      user-select: none;
+      display: inline-block;
+      min-width: 240px;
+    }
+
+    .title:hover {
+      background: #e0eaff;
+    }
+
+    .title::before {
+      content: "▶ ";
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .title.open::before {
+      content: "▼ ";
+    }
+
+    .content {
+      display: none;
+      margin-top: 0.35rem;
+    }
+
+    .content.open {
+      display: block;
+    }
+
+    .leaf {
+      margin: 0.2rem 0 0.2rem 1.1rem;
+      padding: 0.15rem 0;
+    }
+
+    .meta {
+      margin-left: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-label {
+      font-weight: bold;
+      margin: 0.5rem 0 0.2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Programmieren 2</h1>
+  <div class="meta">
+    <a href="https://www.fhnw.ch/de/studium/module/9794384" target="_blank" rel="noopener noreferrer">
+      Modullink
+    </a>
+  </div>
+
+  <div id="app"></div>
+
+  <script>
+    const data = {
+      title: "Programmieren 2",
+      children: [
+        {
+          title: "1st Level",
+          children: [
+            {
+              title: "Programmieren auf höheren Abstraktionsstufen, dynamische Datenstrukturen und Umgang mit komplexen Bibliotheken und Frameworks.",
+              children: [
+                {
+                  title: "Most detailed Level",
+                  children: [
+                    {
+                      title: "Generische Programmierung",
+                      children: [
+                        { title: "von dynamischer Typisierung zu Typparametern" },
+                        { title: "Vor- und Nachteile: statisch vs. dynamisch typisierte Sprachen" },
+                        { title: "Techniken zur Kompensation der jeweiligen Nachteile anwenden" },
+                        { title: "Generische Bausteine verstehen, sinnvoll einsetzen, teils selbst entwickeln" },
+                        { title: "Konzepte generischer Collection-Frameworks verstehen" },
+                        { title: "Eigenschaften und Implementationsaspekte wichtiger Collections kennen und anwenden" }
+                      ]
+                    },
+                    {
+                      title: "Funktionale Konzepte",
+                      children: [
+                        { title: "Callbacks" },
+                        { title: "Funktionstypen" },
+                        { title: "Lambda-Ausdrücke" },
+                        { title: "Higher-Order Functions" }
+                      ]
+                    },
+                    {
+                      title: "Algebraische Datentypen & Pattern Matching",
+                      children: [
+                        { title: "Von Enumerations zu algebraischen Datentypen und Pattern Matching" },
+                        { title: "Algebraische Datentypen (Produkt-/Summentypen) kennen" },
+                        { title: "Eigene Typen entwerfen, implementieren und sinnvoll verwenden" }
+                      ]
+                    },
+                    {
+                      title: "Dynamische Datenstrukturen und Algorithmen",
+                      children: [
+                        {
+                          title: "Implementation dynamischer Datenstrukturen und einfacher Algorithmen",
+                          children: [
+                            { title: "verkettete Listen" },
+                            { title: "Bäume" },
+                            { title: "Graphen" }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      title: "Vererbung & Framework-Anwendungen",
+                      children: [
+                        { title: "Anwendungen von Vererbung (z. B. in GUI- oder Collections-Frameworks)" },
+                        { title: "Nutzen und Risiken von Vererbung verstehen; Alternativen kennen" },
+                        { title: "Vererbung bewusst und situationsgerecht einsetzen" }
+                      ]
+                    },
+                    {
+                      title: "Fehlerbehandlung",
+                      children: [
+                        { title: "Ausnahmebehandlung" }
+                      ]
+                    },
+                    {
+                      title: "Bibliotheken und Frameworks",
+                      children: [
+                        { title: "Aufbau und Verwendung komplexer Libraries und Frameworks" },
+                        { title: "Selbständige Einarbeitung; effektive Nutzung zur Entwicklung eigener Applikationen" }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+
+    function createNode(nodeData) {
+      const node = document.createElement("div");
+      node.className = "node";
+
+      const hasChildren = Array.isArray(nodeData.children) && nodeData.children.length > 0;
+
+      if (hasChildren) {
+        const title = document.createElement("div");
+        title.className = "title";
+        title.textContent = nodeData.title;
+
+        const content = document.createElement("div");
+        content.className = "content";
+
+        nodeData.children.forEach(child => {
+          content.appendChild(createNode(child));
+        });
+
+        title.addEventListener("click", () => {
+          content.classList.toggle("open");
+          title.classList.toggle("open");
+        });
+
+        node.appendChild(title);
+        node.appendChild(content);
+      } else {
+        const leaf = document.createElement("div");
+        leaf.className = "leaf";
+        leaf.textContent = nodeData.title;
+        node.appendChild(leaf);
+      }
+
+      return node;
+    }
+
+    const app = document.getElementById("app");
+    app.appendChild(createNode(data));
+  </script>
+</body>
+</html>

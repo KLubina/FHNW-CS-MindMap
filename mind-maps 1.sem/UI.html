@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Centered Design and Requirements Engineering – Lernmodul</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+      margin: 20px;
+      color: #222;
+      background: #fff;
+    }
+
+    h1 {
+      margin-bottom: 0.3rem;
+    }
+
+    a {
+      color: #0a66c2;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .node {
+      margin-left: 1rem;
+      border-left: 2px solid #ddd;
+      padding-left: 0.75rem;
+      margin-top: 0.35rem;
+    }
+
+    .title {
+      cursor: pointer;
+      background: #f0f8ff;
+      padding: 0.4rem 0.6rem;
+      margin: 0.2rem 0;
+      border-radius: 6px;
+      user-select: none;
+      display: inline-block;
+      min-width: 240px;
+    }
+
+    .title:hover {
+      background: #e0eaff;
+    }
+
+    .title::before {
+      content: "▶ ";
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .title.open::before {
+      content: "▼ ";
+    }
+
+    .content {
+      display: none;
+      margin-top: 0.35rem;
+    }
+
+    .content.open {
+      display: block;
+    }
+
+    .leaf {
+      margin: 0.2rem 0 0.2rem 1.1rem;
+      padding: 0.15rem 0;
+    }
+
+    .meta {
+      margin-left: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-label {
+      font-weight: bold;
+      margin: 0.5rem 0 0.2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>User Centered Design and Requirements Engineering</h1>
+  <div class="meta">
+    <a href="https://www.fhnw.ch/de/studium/module/9795670" target="_blank" rel="noopener noreferrer">
+      Modullink
+    </a>
+  </div>
+
+  <div id="app"></div>
+
+  <script>
+    const data = {
+      title: "User Centered Design and Requirements Engineering",
+      children: [
+        {
+          title: "1st Level",
+          children: [
+            {
+              title: "Grundlagen von User-centred Design mit den Prinzipien des Requirements Engineering und Einführung in Spatial Computing.",
+              children: [
+                {
+                  title: "Most detailed Level",
+                  children: [
+                    {
+                      title: "User-centred Design",
+                      children: [
+                        {
+                          title: "Bedürfnisse der Nutzenden kennenlernen",
+                          children: [
+                            { title: "komplexen Nutzungskontext analysieren" },
+                            { title: "Nutzungskontextgerechte Interaktions- und Dialogkonzepte entwerfen." }
+                          ]
+                        },
+                        {
+                          title: "Schnittstellen für verschiedene Ausgabegeräte entwickeln und bewerten.",
+                          children: [
+                            { title: "Prozesse zur UI-Entwicklung anwenden." },
+                            { title: "Werkzeuge für Gestaltungsvarianten und Prototypen einsetzen." },
+                            { title: "Gestaltungsvarianten und Prototypen bewerten." },
+                            { title: "Grafische UIs und Interaktionslösungen implementieren." }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      title: "Requirements Engineering",
+                      children: [
+                        {
+                          title: "Überzeugende Produktvision entwickeln",
+                          children: [
+                            { title: "Produktvisionen per Online-Recherche und Kreativität entwerfen." }
+                          ]
+                        },
+                        {
+                          title: "Software nach Stand der Technik spezifizieren",
+                          children: [
+                            {
+                              title: "Merkmale und Anforderungen von Softwarelösungen",
+                              children: [
+                                { title: "erheben" },
+                                { title: "analysieren" },
+                                { title: "dokumentieren" },
+                                { title: "Relevanz für Produktziele prüfen." }
+                              ]
+                            },
+                            {
+                              title: "Spezifikationstechniken anwenden",
+                              children: [
+                                { title: "Domänenmodelle" },
+                                { title: "Use Cases" },
+                                { title: "User Stories" },
+                                { title: "Shall-Boilerplates" }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          title: "Win-Win-Vereinbarungen mit Stakeholdern treffen.",
+                          children: [
+                            {
+                              title: "Leichtgewichtige Techniken für",
+                              children: [
+                                { title: "Priorisierung" },
+                                { title: "Visualisierung" },
+                                {
+                                  title: "Abstimmung mit Stakeholdern",
+                                  children: [
+                                    { title: "Funktionen" },
+                                    { title: "Anforderungen" },
+                                    { title: "Releasepläne" }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      title: "Einführung in Visual und Spatial Computing",
+                      children: [
+                        {
+                          title: "Überblick Visual Computing",
+                          children: [
+                            { title: "Konzepte des Visual und Spatial Computing verstehen." }
+                          ]
+                        },
+                        {
+                          title: "Grundlagen Bildgebung und Grafik",
+                          children: [
+                            { title: "Visuelle und räumliche Interaktionskonzepte ins User-centred Design einbeziehen." }
+                          ]
+                        },
+                        {
+                          title: "Studierende lernen Konzepte wie",
+                          children: [
+                            { title: "algorithmische Geometrie" },
+                            { title: "Computergrafik" },
+                            { title: "Interaktionsparadigmen für VR/AR." }
+                          ]
+                        },
+                        {
+                          title: "Kurze Einführung in Spatial Computing als Schlüsseltechnologie für immersive Anwendungen.",
+                          children: [
+                            { title: "Potenzial immersiver Technologien für Anwendungsbereiche bewerten." }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+
+    function createNode(nodeData) {
+      const node = document.createElement("div");
+      node.className = "node";
+
+      const hasChildren = Array.isArray(nodeData.children) && nodeData.children.length > 0;
+
+      if (hasChildren) {
+        const title = document.createElement("div");
+        title.className = "title";
+        title.textContent = nodeData.title;
+
+        const content = document.createElement("div");
+        content.className = "content";
+
+        nodeData.children.forEach(child => {
+          content.appendChild(createNode(child));
+        });
+
+        title.addEventListener("click", () => {
+          content.classList.toggle("open");
+          title.classList.toggle("open");
+        });
+
+        node.appendChild(title);
+        node.appendChild(content);
+      } else {
+        const leaf = document.createElement("div");
+        leaf.className = "leaf";
+        leaf.textContent = nodeData.title;
+        node.appendChild(leaf);
+      }
+
+      return node;
+    }
+
+    const app = document.getElementById("app");
+    app.appendChild(createNode(data));
+  </script>
+</body>
+</html>
