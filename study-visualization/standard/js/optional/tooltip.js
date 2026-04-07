@@ -198,8 +198,6 @@ window.StudienplanTooltip = {
       // Fallback ohne Details
       detailsHTML = `
                 <h3>${name}</h3>
-                ${ects ? `<div style="font-size: 0.9em; color: #666;">${ects}</div>` : ""}
-                <p style="color: #999; font-size: 0.9em;">Keine weiteren Details verfügbar</p>
             `;
     }
 
