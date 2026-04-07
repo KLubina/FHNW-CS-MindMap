@@ -73,6 +73,36 @@
       padding: 0.15rem 0;
     }
 
+    .description {
+      margin: 0.4rem 0 0.4rem 1.1rem;
+      padding: 0.6rem 0.8rem;
+      background: #f9f9f9;
+      border-left: 3px solid #0a66c2;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      color: #333;
+    }
+
+    .example-text {
+      margin: 0.3rem 0 0.3rem 1.1rem;
+      padding: 0.5rem 0.8rem;
+      background: #f0f8ff;
+      border-left: 2px solid #87ceeb;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .note-text {
+      margin: 0.3rem 0 0.3rem 1.1rem;
+      padding: 0.5rem 0.8rem;
+      background: #fff3cd;
+      border-left: 2px solid #ffc107;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
     .meta {
       margin-left: 1rem;
       margin-bottom: 1rem;
@@ -106,15 +136,44 @@
             {
               title: "Mengen und Operationen auf Mengen",
               children: [
-                { title: "wissen, was eine Menge ist" },
+                {
+                  title: "wissen, was eine Menge ist",
+                  description: "Eine Menge ist eine Sammlung von eindeutigen Objekten, die Elemente genannt werden. Reihenfolge spielt keine Rolle, und jedes Element kommt nur einmal vor.",
+                  examples: ["A = {1, 2, 3, 4}", "B = {a, b, c}", "C = {rot, grün, blau}"]
+                },
                 {
                   title: "können die wichtigsten Operationen auf Mengen durchführen",
                   children: [
-                    { title: "Schnitt" },
-                    { title: "Vereinigung" },
-                    { title: "Differenz" },
-                    { title: "Potenzmengenbildung" },
-                    { title: "kartesisches Produkt" }
+                    {
+                      title: "Schnitt (∩)",
+                      description: "Der Schnitt A ∩ B enthält alle Elemente, die in BEIDEN Mengen vorkommen.",
+                      examples: ["A = {1, 2, 3, 4}", "B = {3, 4, 5, 6}", "A ∩ B = {3, 4}"],
+                      note: "Frage: Was haben beide gemeinsam?"
+                    },
+                    {
+                      title: "Vereinigung (∪)",
+                      description: "Die Vereinigung A ∪ B enthält ALLE Elemente aus A oder B (oder beiden), ohne Duplikate.",
+                      examples: ["A = {1, 2, 3, 4}", "B = {3, 4, 5, 6}", "A ∪ B = {1, 2, 3, 4, 5, 6}"],
+                      note: "Frage: Alles zusammen aus beiden Mengen?"
+                    },
+                    {
+                      title: "Differenz (\\)",
+                      description: "Die Differenz A \\ B enthält alle Elemente, die in A sind, aber NICHT in B.",
+                      examples: ["A = {1, 2, 3, 4}", "B = {3, 4, 5, 6}", "A \\ B = {1, 2}", "B \\ A = {5, 6}"],
+                      note: "⚠️ Achtung: Nicht kommutativ! A \\ B ≠ B \\ A"
+                    },
+                    {
+                      title: "Potenzmengenbildung (𝒫)",
+                      description: "Die Potenzmenge 𝒫(A) ist die Menge ALLER möglichen Teilmengen von A, inklusive der leeren Menge ∅ und A selbst.",
+                      examples: ["A = {1, 2}", "𝒫(A) = { {}, {1}, {2}, {1,2} }", "Das sind 2² = 4 Teilmengen"],
+                      note: "Wichtig: Bei n Elementen hat die Potenzmenge immer 2ⁿ Elemente"
+                    },
+                    {
+                      title: "kartesisches Produkt (×)",
+                      description: "Das kartesische Produkt A × B ist die Menge ALLER geordneten Paare (a, b), wobei a aus A kommt und b aus B kommt.",
+                      examples: ["A = {1, 2}", "B = {x, y}", "A × B = {(1,x), (1,y), (2,x), (2,y)}", "→ 2 × 2 = 4 Paare"],
+                      note: "Dies ist die Grundlage von Datenbanken und relationaler Algebra!"
+                    }
                   ]
                 }
               ]
@@ -125,25 +184,60 @@
                 {
                   title: "Relationen",
                   children: [
-                    { title: "verstehen den Begriff der Relation" },
+                    {
+                      title: "verstehen den Begriff der Relation",
+                      description: "Eine Relation R auf Mengen A und B ist eine Teilmenge des kartesischen Produkts A × B. Sie definiert eine Beziehung zwischen Elementen.",
+                      examples: ["Person X studiert Fach Y", "A = {Alice, Bob}", "B = {Mathe, Info}", "R = {(Alice, Mathe), (Bob, Info)}"]
+                    },
                     {
                       title: "Relation auf folgendes untersuchen",
                       children: [
-                        { title: "Reflexivität" },
-                        { title: "Symmetrie" },
-                        { title: "Transitivität" },
-                        { title: "Antisymmetrie" }
+                        {
+                          title: "Reflexivität 🔄",
+                          description: "Eine Relation ist reflexiv, wenn jedes Element zu sich selbst in Relation steht. Formal: Für alle a ∈ A gilt (a, a) ∈ R",
+                          examples: ["Relation 'ist gleich' (=): 1 = 1 ✓ REFLEXIV", "Relation 'ist kleiner als' (<): 1 < 1 ✗ NICHT REFLEXIV"]
+                        },
+                        {
+                          title: "Symmetrie 🔀",
+                          description: "Eine Relation ist symmetrisch, wenn aus (a, b) ∈ R folgt (b, a) ∈ R. Die Relation 'funktioniert in beide Richtungen'.",
+                          examples: ["'ist verheiratet mit': Wenn A mit B verheiratet ist, dann B mit A ✓ SYMMETRISCH", "'ist Elternteil von': Wenn A Eltern von B, dann B nicht von A ✗"]
+                        },
+                        {
+                          title: "Transitivität ➡️",
+                          description: "Eine Relation ist transitiv, wenn aus (a, b) ∈ R und (b, c) ∈ R folgt (a, c) ∈ R.",
+                          examples: ["'ist älter als': A älter als B UND B älter als C → A älter als C ✓ TRANSITIV", "'kennt': A kennt B, B kennt C, aber A kennt C nicht notwendig ✗"]
+                        },
+                        {
+                          title: "Antisymmetrie ❌↔️",
+                          description: "Eine Relation ist antisymmetrisch, wenn aus (a, b) ∈ R und (b, a) ∈ R folgt a = b.",
+                          examples: ["'ist ≤': 1 ≤ 1 ✓, 1 ≤ 2 aber nicht 2 ≤ 1 ✓ ANTISYMMETRISCH"]
+                        }
                       ]
                     },
-                    { title: "können die Komposition zweier Relationen bestimmen" }
+                    {
+                      title: "können die Komposition zweier Relationen bestimmen",
+                      description: "Die Komposition R₁ ∘ R₂ kombiniert zwei Relationen: (a, c) ∈ R₁ ∘ R₂ wenn ∃b: (a, b) ∈ R₁ und (b, c) ∈ R₂",
+                      examples: ["R₁ = 'ist Vater von', R₂ = 'ist Vater von'", "R₁ ∘ R₂ = 'ist Großvater von'"]
+                    }
                   ]
                 },
                 {
                   title: "Äquivalenz- und Ordnungsrelationen",
                   children: [
-                    { title: "kennen Äquivalenzrelationen" },
-                    { title: "kennen Ordnungsrelationen" },
-                    { title: "verstehen den Zusammenhang zwischen Äquivalenzrelationen und Partitionen" }
+                    {
+                      title: "kennen Äquivalenzrelationen",
+                      description: "Eine Äquivalenzrelation ist reflexiv, symmetrisch UND transitiv. Sie partitioniert eine Menge in Äquivalenzklassen.",
+                      examples: ["'hat denselben Rest beim Teilen durch 3'", "Klassen: {0,3,6,9,...}, {1,4,7,10,...}, {2,5,8,11,...}"]
+                    },
+                    {
+                      title: "kennen Ordnungsrelationen",
+                      description: "Eine Ordnungsrelation ist reflexiv, antisymmetrisch UND transitiv. Sie ermöglicht es, Elemente zu vergleichen und zu sortieren.",
+                      examples: ["'ist ≤': reflexiv ✓, antisymmetrisch ✓, transitiv ✓"]
+                    },
+                    {
+                      title: "verstehen den Zusammenhang zwischen Äquivalenzrelationen und Partitionen",
+                      description: "Jede Äquivalenzrelation definiert eine eindeutige Partition (Zerlegung) der Menge in disjunkte Äquivalenzklassen."
+                    }
                   ]
                 },
                 {
@@ -152,22 +246,48 @@
                     {
                       title: "können (totale/partielle) Funktionen untersuchen auf",
                       children: [
-                        { title: "Injektivität" },
-                        { title: "Surjektivität" },
-                        { title: "Bijektivität" }
+                        {
+                          title: "Injektivität",
+                          description: "Eine Funktion ist injektiv (eins-zu-eins), wenn verschiedene Eingaben zu verschiedenen Ausgaben führen.",
+                          examples: ["f(1) = 10, f(2) = 20, f(3) = 30 ✓ INJEKTIV", "f(1) = 5, f(2) = 5, f(3) = 10 ✗ NICHT INJEKTIV"]
+                        },
+                        {
+                          title: "Surjektivität",
+                          description: "Eine Funktion ist surjektiv (auf), wenn jedes Element der Zielmenge von mindestens einem Element der Definitionsmenge erreicht wird.",
+                          examples: ["f: {1,2,3} → {a,b}: f(1)=a, f(2)=b, f(3)=b ✓ SURJEKTIV", "f: {1,2} → {a,b,c}: f(1)=a, f(2)=b; c wird nicht erreicht ✗"]
+                        },
+                        {
+                          title: "Bijektivität",
+                          description: "Eine Funktion ist bijektiv, wenn sie gleichzeitig injektiv und surjektiv ist. Perfekte eins-zu-eins-Entsprechung.",
+                          examples: ["f: {1,2,3} → {a,b,c}: f(1)=a, f(2)=c, f(3)=b ✓ BIJEKTIV", "Bei Bijektion existiert die Umkehrfunktion f⁻¹!"]
+                        }
                       ]
                     },
-                    { title: "können gegebenenfalls die Umkehrfunktion bestimmen" }
+                    {
+                      title: "können gegebenenfalls die Umkehrfunktion bestimmen",
+                      description: "Ist f bijektiv, dann existiert f⁻¹, die Umkehrfunktion. Wenn f(x) = y, dann f⁻¹(y) = x.",
+                      examples: ["f: {1,2,3} → {a,b,c} mit f(1)=a, f(2)=c, f(3)=b", "f⁻¹(a)=1, f⁻¹(c)=2, f⁻¹(b)=3"]
+                    }
                   ]
                 },
                 {
                   title: "Eigenschaften von Graphen",
                   children: [
-                    { title: "kennen die wichtigsten Eigenschaften von (un)gerichteten Graphen" },
-                    { title: "sind in der Lage, Probleme aus der Praxis mit Hilfe von Graphen zu modellieren" }
+                    {
+                      title: "kennen die wichtigsten Eigenschaften von (un)gerichteten Graphen",
+                      description: "Ein Graph G = (V, E) besteht aus Knoten (V) und Kanten (E). Graphen können gerichtet oder ungerichtet, gewichtet oder ungewichtet sein.",
+                      examples: ["Ungerichtete Kante: 1 — 2", "Gerichtete Kante: 1 → 2", "Gewichtete Kante: 1 —(5)— 2"]
+                    },
+                    {
+                      title: "sind in der Lage, Probleme aus der Praxis mit Hilfe von Graphen zu modellieren",
+                      description: "Praktische Anwendungen: Soziale Netzwerke (Personen=Knoten, Freundschaften=Kanten), Navigation (Städte=Knoten, Straßen=Kanten), Projektplanung (Aufgaben=Knoten, Abhängigkeiten=Kanten)."
+                    }
                   ]
                 },
-                { title: "Modellierung mit Graphen" }
+                {
+                  title: "Modellierung mit Graphen",
+                  description: "Mit Graphen können reale Probleme abstrakt modelliert und visua lisiert werden: Routing-Probleme, soziale Netzwerke, Abhängigkeiten, etc."
+                }
               ]
             },
             {
@@ -176,15 +296,40 @@
                 {
                   title: "Aussagenlogik",
                   children: [
-                    { title: "wissen, was eine Aussage ist" },
+                    {
+                      title: "wissen, was eine Aussage ist",
+                      description: "Eine Aussage ist ein Satz, der entweder wahr (W) oder falsch (F) ist, aber nicht beides gleichzeitig.",
+                      examples: ["'2 + 2 = 4' → Wahr", "'Die Erde ist flach' → Falsch", "'Wie viel Uhr ist es?' → Keine Aussage (Frage)"]
+                    },
                     {
                       title: "können den Wahrheitsgehalt von zusammengesetzten Aussagen berechnen",
                       children: [
-                        { title: "Disjunktion" },
-                        { title: "Konjunktion" },
-                        { title: "Negation" },
-                        { title: "Implikation" },
-                        { title: "Äquivalenz" }
+                        {
+                          title: "Disjunktion (∨ — Oder)",
+                          description: "A ∨ B ist wahr, wenn mindestens eine der beiden Aussagen wahr ist.",
+                          examples: ["W ∨ W = W", "W ∨ F = W", "F ∨ W = W", "F ∨ F = F"]
+                        },
+                        {
+                          title: "Konjunktion (∧ — Und)",
+                          description: "A ∧ B ist wahr, wenn beide Aussagen wahr sind.",
+                          examples: ["W ∧ W = W", "W ∧ F = F", "F ∧ W = F", "F ∧ F = F"]
+                        },
+                        {
+                          title: "Negation (¬ — Nicht)",
+                          description: "¬A ist wahr, wenn A falsch ist, und falsch, wenn A wahr ist.",
+                          examples: ["¬W = F", "¬F = W"]
+                        },
+                        {
+                          title: "Implikation (→ — Wenn-Dann)",
+                          description: "A → B ist falsch nur, wenn A wahr und B falsch ist.",
+                          examples: ["W → W = W", "W → F = F", "F → W = W", "F → F = W"],
+                          note: "Besonderheit: Wenn A falsch ist, ist A → B immer wahr!"
+                        },
+                        {
+                          title: "Äquivalenz (↔ — Genau Dann Wenn)",
+                          description: "A ↔ B ist wahr, wenn beide Aussagen den gleichen Wahrheitswert haben.",
+                          examples: ["W ↔ W = W", "W ↔ F = F", "F ↔ W = F", "F ↔ F = W"]
+                        }
                       ]
                     }
                   ]
@@ -192,8 +337,16 @@
                 {
                   title: "Existenz- und Allquantoren",
                   children: [
-                    { title: "kennen den Existenz- und den Allquantor" },
-                    { title: "können den Wahrheitsgehalt quantifizierter Aussagen bestimmen" }
+                    {
+                      title: "kennen den Existenz- und den Allquantor",
+                      description: "∃x P(x) bedeutet 'es existiert mindestens ein x mit P(x)'. ∀x P(x) bedeutet 'für alle x gilt P(x)'.",
+                      examples: ["∃x ∈ ℕ: x > 100 → WAHR (z.B. x=101)", "∀x ∈ ℕ: x ≥ 0 → WAHR"]
+                    },
+                    {
+                      title: "können den Wahrheitsgehalt quantifizierter Aussagen bestimmen",
+                      description: "¬(∀x: P(x)) ≡ ∃x: ¬P(x) und ¬(∃x: P(x)) ≡ ∀x: ¬P(x)",
+                      examples: ["¬(Alle bestanden) = Es gibt einen, der NICHT bestanden hat"]
+                    }
                   ]
                 }
               ]
@@ -204,17 +357,39 @@
                 {
                   title: "Induktion",
                   children: [
-                    { title: "verstehen das Prinzip der vollständigen Induktion" },
-                    { title: "sind in der Lage, Induktionsbeweise zu führen" }
+                    {
+                      title: "verstehen das Prinzip der vollständigen Induktion",
+                      description: "Vollständige Induktion hat zwei Teile: (1) Basisfall: P(1) ist wahr, (2) Induktionsschritt: Wenn P(n) wahr, dann P(n+1) wahr.",
+                      examples: ["Behauptung: 1+2+...+n = n(n+1)/2", "Basisfall n=1: 1 = 1·2/2 ✓", "Dann folgt: P(2), P(3), P(4), ... alle wahr"]
+                    },
+                    {
+                      title: "sind in der Lage, Induktionsbeweise zu führen",
+                      description: "Ein Induktionsbeweis wird wie Dominos ausgelöst: Der erste fällt um (Basisfall), jeder der nächste (Induktionsschritt), daher fallen alle!"
+                    }
                   ]
                 },
                 {
                   title: "Rekursion",
                   children: [
-                    { title: "können lineare homogene Rekursionsgleichungen (bis zum Grad 2) lösen" },
-                    { title: "können einfache inhomogene Rekursionsgleichungen (bis zum Grad 2) lösen" },
-                    { title: "können durch Variablentransformation Rekursionsgleichungen erhalten" },
-                    { title: "können diese lösen; solche Gleichungen treten häufig in der Algorithmusanalyse auf" }
+                    {
+                      title: "können lineare homogene Rekursionsgleichungen (bis zum Grad 2) lösen",
+                      description: "Form: a(n) = c₁·a(n-1) + c₂·a(n-2). Lösung durch charakteristische Gleichung: r² - c₁·r - c₂ = 0",
+                      examples: ["Fibonacci: F(n) = F(n-1) + F(n-2)", "Charakteristische Gleichung: r² = r + 1"]
+                    },
+                    {
+                      title: "können einfache inhomogene Rekursionsgleichungen (bis zum Grad 2) lösen",
+                      description: "Form: a(n) = c₁·a(n-1) + c₂·a(n-2) + b(n) mit zusätzlichem Term b(n).",
+                      examples: ["a(n) = a(n-1) + n (ist Summe 1+2+...+n)"]
+                    },
+                    {
+                      title: "können durch Variablentransformation Rekursionsgleichungen erhalten",
+                      description: "Durch Substitutionen wie a(n) = r^n können komplexe Rekursionen vereinfacht werden."
+                    },
+                    {
+                      title: "können diese lösen; solche Gleichungen treten häufig in der Algorithmusanalyse auf",
+                      description: "Beispiel: Binäre Suche hat Laufzeit T(n) = T(n/2) + O(1), Lösung: T(n) = O(log n)",
+                      note: "Rekursionsgleichungen sind zentral für die Analyse von Algorithmen!"
+                    }
                   ]
                 }
               ]
@@ -227,24 +402,46 @@
             {
               title: "Produktionsgrammatiken",
               children: [
-                { title: "verstehen Grammatiken und wie man mit ihnen formale Sprachen beschreibt" }
+                {
+                  title: "verstehen Grammatiken und wie man mit ihnen formale Sprachen beschreibt",
+                  description: "Eine Grammatik G = (V, Σ, P, S) besteht aus: Variablen (V), Terminalen (Σ), Produktionsregeln (P), Startsymbol (S).",
+                  examples: ["Regel: N → D | D N", "Regel: D → 0 | 1 | 2 | ... | 9", "Dies erzeugt natürliche Zahlen"]
+                }
               ]
             },
             {
               title: "Chomsky-Hierarchie",
               children: [
-                { title: "können Grammatiken und Sprachen gemäss der Chomsky-Hierarchie klassifizieren" }
+                {
+                  title: "können Grammatiken und Sprachen gemäss der Chomsky-Hierarchie klassifizieren",
+                  description: "Typ 0: Unbeschränkt (Turing-Maschinen) | Typ 1: Kontextsensitiv | Typ 2: Kontextfrei (Parser) | Typ 3: Regulär (Regex)",
+                  examples: ["Typ 3 Beispiel: S → 0|1|0S|1S erzeugt {0,1,00,01,10,11,...}", "Typ 2 Beispiel: S → ε|(S)|SS erzeugt Klammerausdrücke"]
+                }
               ]
             },
             {
               title: "Endliche Automaten",
               children: [
-                { title: "wissen, was ein DFA ist" },
-                { title: "kennen den Zusammenhang zu den regulären Sprachen" },
-                { title: "können zu ausgewählten regulären Sprachen einen DFA konstruieren" }
+                {
+                  title: "wissen, was ein DFA ist",
+                  description: "Ein Determinischer Endlicher Automat (DFA) hat: Zustandsmenge, Eingabealphabet, Übergangsfunktion δ, Startzustand, Akzeptierende Zustände.",
+                  examples: ["DFA für Binärstrings, die mit 1 enden: δ(q0,0)→q0, δ(q0,1)→q1, δ(q1,0)→q0, δ(q1,1)→q1"]
+                },
+                {
+                  title: "kennen den Zusammenhang zu den regulären Sprachen",
+                  description: "Theorem: Eine Sprache ist regulär ⟺ Sie kann von einem DFA akzeptiert werden. Reguläre Ausdrücke und DFAs sind äquivalent!",
+                  examples: ["Regex [01]*1 erzeugt DFA für Strings mit 1 am Ende"]
+                },
+                {
+                  title: "können zu ausgewählten regulären Sprachen einen DFA konstruieren",
+                  description: "Praktische Anwendungen: Lexikalische Analyse bei Compilern, Pattern Matching (grep), Validierung von Eingabeformaten."
+                }
               ]
             },
-            { title: "Endliche Automaten und reguläre Sprachen" }
+            {
+              title: "Endliche Automaten und reguläre Sprachen",
+              description: "DFAs erkennen reguläre Sprachen, die durch reguläre Ausdrücke definiert sind. Sie sind die Grundlage für Lexer und Pattern Matching."
+            }
           ]
         }
       ]
@@ -276,10 +473,54 @@
         node.appendChild(title);
         node.appendChild(content);
       } else {
-        const leaf = document.createElement("div");
-        leaf.className = "leaf";
-        leaf.textContent = nodeData.title;
-        node.appendChild(leaf);
+        // Leaf node - check if it has description
+        if (nodeData.description || nodeData.examples || nodeData.note) {
+          // Make it expandable
+          const title = document.createElement("div");
+          title.className = "title";
+          title.textContent = nodeData.title;
+
+          const content = document.createElement("div");
+          content.className = "content";
+
+          // Add description
+          if (nodeData.description) {
+            const desc = document.createElement("div");
+            desc.className = "description";
+            desc.textContent = nodeData.description;
+            content.appendChild(desc);
+          }
+
+          // Add examples
+          if (nodeData.examples && nodeData.examples.length > 0) {
+            const exampleDiv = document.createElement("div");
+            exampleDiv.className = "example-text";
+            exampleDiv.textContent = nodeData.examples.join("\n");
+            content.appendChild(exampleDiv);
+          }
+
+          // Add note
+          if (nodeData.note) {
+            const noteDiv = document.createElement("div");
+            noteDiv.className = "note-text";
+            noteDiv.textContent = nodeData.note;
+            content.appendChild(noteDiv);
+          }
+
+          title.addEventListener("click", () => {
+            content.classList.toggle("open");
+            title.classList.toggle("open");
+          });
+
+          node.appendChild(title);
+          node.appendChild(content);
+        } else {
+          // Simple leaf without description
+          const leaf = document.createElement("div");
+          leaf.className = "leaf";
+          leaf.textContent = nodeData.title;
+          node.appendChild(leaf);
+        }
       }
 
       return node;
