@@ -73,6 +73,36 @@
       padding: 0.15rem 0;
     }
 
+    .description {
+      margin: 0.4rem 0 0.4rem 1.1rem;
+      padding: 0.6rem 0.8rem;
+      background: #f9f9f9;
+      border-left: 3px solid #0a66c2;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      color: #333;
+    }
+
+    .example-text {
+      margin: 0.3rem 0 0.3rem 1.1rem;
+      padding: 0.5rem 0.8rem;
+      background: #f0f8ff;
+      border-left: 2px solid #87ceeb;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .note-text {
+      margin: 0.3rem 0 0.3rem 1.1rem;
+      padding: 0.5rem 0.8rem;
+      background: #fff3cd;
+      border-left: 2px solid #ffc107;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
     .meta {
       margin-left: 1rem;
       margin-bottom: 1rem;
@@ -97,7 +127,7 @@
   <div id="app"></div>
 
   <script>
-        const data = {
+    const data = {
       title: "Informationssysteme",
       children: [
         {
@@ -106,40 +136,104 @@
             {
               title: "grundlegende Konzepte und Komponenten moderner Informationssysteme",
               children: [
-                { title: "Linux" },
-                { title: "Netzwerk" },
-                { title: "Container" },
-                { title: "Datenbank-Systeme" },
-                { title: "Datenmanagement" }
+                {
+                  title: "Linux",
+                  description: "Linux ist ein freies Open-Source Betriebssystem, das die Basis für viele moderne Server, Container und Cloud-Infrastrukturen bildet.",
+                  examples: ["Linux-Distributionen: Ubuntu, CentOS, Debian", "Kernel-basiertes Betriebssystem mit POSIX-Standard", "Läuft auf Servern, Desktops, Embedded Systemen und IoT-Geräten"]
+                },
+                {
+                  title: "Netzwerk",
+                  description: "Netzwerke verbinden Computer und Geräte, um Daten auszutauschen. Sie sind die Infrastruktur für moderne Informationssysteme.",
+                  examples: ["TCP/IP: Grundlage des Internets", "LAN (Local Area Network): Netzwerk in einem Gebäude", "WAN (Wide Area Network): Geografisch verteiltes Netzwerk"],
+                  note: "OSI-Modell definiert 7 Schichten der Netzwerk-Kommunikation"
+                },
+                {
+                  title: "Container",
+                  description: "Container sind leichte, isolierte Umgebungen, die eine Anwendung mit all ihren Abhängigkeiten enthalten. Sie ermöglichen konsistente Deployment über verschiedene Umgebungen.",
+                  examples: ["Docker: Populäres Container-Format", "Schnellere als VMs, teilen den Kernel des Host-OS", "Ermöglichen Microservices-Architektur"],
+                  note: "Wichtig für DevOps und Cloud-Native-Entwicklung"
+                },
+                {
+                  title: "Datenbank-Systeme",
+                  description: "Datenbanken speichern, organisieren und verwalten große Mengen strukturierter Daten. Sie sind das Herz moderner Informationssysteme.",
+                  examples: ["Relational DB: MySQL, PostgreSQL, Oracle (tabellen-basiert)", "NoSQL: MongoDB, Cassandra (flexibel strukturiert)", "Graph-DB: Neo4j (für Beziehungen optimiert)"]
+                },
+                {
+                  title: "Datenmanagement",
+                  description: "Datenmanagement ist der Prozess des effizienten Sammelns, Speicherns, Schützens und Nutzens von Daten in einem Unternehmen.",
+                  examples: ["ETL: Extract, Transform, Load Prozesse", "Data Governance: Regeln und Richtlinien für Datennutzung", "Master Data Management: Zentrale Verwaltung kritischer Daten"],
+                  note: "Gutes Datenmanagement ist essentiell für Analytics und BI"
+                }
               ]
             },
             {
-              title: "verschiedene Ebenen moderner Informations- und Computersysteme verwenden und einordnen"
+              title: "verschiedene Ebenen moderner Informations- und Computersysteme verwenden und einordnen",
+              description: "Informationssysteme bestehen aus mehreren Schichten: Physikalische Infrastruktur (Server, Netzwerk), OS (Linux, Windows), Anwendungen (Apps, Services) und Datenebene (Datenbanken)."
             }
           ]
         },
         {
           title: "2. Datenmanagement",
           children: [
-            { title: "Informationen modellieren" },
-            { title: "Datenbank zur Speicherung von Daten aufsetzen" },
-            { title: "Daten aus einer Datenbank lesen" },
-            { title: "Daten in die Datenbank einfügen und mutieren" }
+            {
+              title: "Informationen modellieren",
+              description: "Informationsmodellierung bedeutet, reale Objekte und ihre Beziehungen in strukturierte Datenstrukturen zu überführen.",
+              examples: ["Entity-Relationship (ER) Modell: Objekte und ihre Beziehungen darstellen", "Klassifizierung von Attributen: Primär-/Fremdschlüssel", "Normalisierung: Reduktion von Redundanz in Datenstrukturen"],
+              note: "Gute Modellierung verhindert Datenverlust und Inkonsistenzen"
+            },
+            {
+              title: "Datenbank zur Speicherung von Daten aufsetzen",
+              description: "Eine Datenbank wird mit einem DBMS (Database Management System) aufgesetzt. Dies umfasst Schema-Definition, Zugriffsverwaltung und Performance-Tuning.",
+              examples: ["CREATE TABLE statements schreiben", "Indizes für Performance erstellen", "Backup und Recovery Strategien planen"]
+            },
+            {
+              title: "Daten aus einer Datenbank lesen",
+              description: "Mit SQL SELECT-Statements werden Daten aus Datenbanken abgerufen. Optimale Queries sind essentiell für Performance.",
+              examples: ["SELECT * FROM users WHERE age > 18", "Joins für Daten von mehreren Tabellen", "Aggregation: SUM, COUNT, AVG, GROUP BY"]
+            },
+            {
+              title: "Daten in die Datenbank einfügen und mutieren",
+              description: "INSERT, UPDATE und DELETE Operationen ändern die Daten in einer Datenbank. ACID-Eigenschaften gewährleisten Konsistenz.",
+              examples: ["INSERT INTO users VALUES (...)", "UPDATE users SET age = 30 WHERE id = 5", "DELETE FROM users WHERE inactive = true"],
+              note: "Transaktionen sichern Datenkonsistenz bei mehreren Operationen"
+            }
           ]
         },
         {
           title: "3. Datenschutz und Datensicherheit",
           children: [
-            { title: "Konzept des Datenschutzes" },
-            { title: "Konzept der Datensicherheit" }
+            {
+              title: "Konzept des Datenschutzes",
+              description: "Datenschutz regelt den Umgang mit persönlichen Daten. In der EU wird dies durch die GDPR (Datenschutz-Grundverordnung) geregelt.",
+              examples: ["Recht auf Vergessen: Nutzer können Löschung ihrer Daten fordern", "Datenmininimierung: Nur notwendige Daten sammeln", "Transparenz: Nutzer müssen über Datennutzung informiert werden"],
+              note: "Verstöße gegen DSGVO können zu hohen Geldstrafen führen"
+            },
+            {
+              title: "Konzept der Datensicherheit",
+              description: "Datensicherheit schützt Daten vor unbefugtem Zugriff, Änderung oder Vernichtung. Sie ist die technische Umsetzung der Sicherheitsrichtlinien.",
+              examples: ["Verschlüsselung: Daten encrypted speichern und übertragen", "Access Control: Nur autorisierte Nutzer dürfen Daten lesen", "Intrusion Detection: Überwachung auf unerlaubte Zugriffe"],
+              note: "CIA-Triada: Confidentiality, Integrity, Availability"
+            }
           ]
         },
         {
           title: "4. Informationssysteme in die Praxis umsetzen",
           children: [
-            { title: "Informationssysteme konzipieren, aufbauen und betreiben" },
-            { title: "Grundlagen aktueller Technologien für Informationssysteme verstehen" },
-            { title: "Informationssysteme situationsgerecht für konkrete Aufgabenstellungen einsetzen" }
+            {
+              title: "Informationssysteme konzipieren, aufbauen und betreiben",
+              description: "Dies ist der Prozess von der Planung über die Implementierung bis zum laufenden Betrieb eines Informationssystems.",
+              examples: ["Anforderungsanalyse: Was braucht das System?", "Architektur-Design: Wie soll es aufgebaut werden?", "Deployment und Monitoring: System in Betrieb nehmen und überwachen"]
+            },
+            {
+              title: "Grundlagen aktueller Technologien für Informationssysteme verstehen",
+              description: "Moderne Technologien wie Cloud Computing, Microservices, APIs und Big Data sind essentiell für skalierbare Systeme.",
+              examples: ["Cloud Platforms: AWS, Azure, Google Cloud", "APIs: RESTful, GraphQL für Kommunikation zwischen Services", "Big Data: Hadoop, Spark für massive Datenverarbeitung"]
+            },
+            {
+              title: "Informationssysteme situationsgerecht für konkrete Aufgabenstellungen einsetzen",
+              description: "Verschiedene Probleme erfordern verschiedene Lösungen. Die richtige Technologie auswählen ist kritisch für Erfolg.",
+              examples: ["E-Commerce: Braucht hohe Verfügbarkeit und schnelle Responses", "Analytics: Braucht Datenintegration und Reporting-Tools", "IoT: Braucht Echtzeit-Datenverarbeitung und Edge Computing"]
+            }
           ]
         }
       ]
@@ -171,10 +265,54 @@
         node.appendChild(title);
         node.appendChild(content);
       } else {
-        const leaf = document.createElement("div");
-        leaf.className = "leaf";
-        leaf.textContent = nodeData.title;
-        node.appendChild(leaf);
+        // Leaf node - check if it has description
+        if (nodeData.description || nodeData.examples || nodeData.note) {
+          // Make it expandable
+          const title = document.createElement("div");
+          title.className = "title";
+          title.textContent = nodeData.title;
+
+          const content = document.createElement("div");
+          content.className = "content";
+
+          // Add description
+          if (nodeData.description) {
+            const desc = document.createElement("div");
+            desc.className = "description";
+            desc.textContent = nodeData.description;
+            content.appendChild(desc);
+          }
+
+          // Add examples
+          if (nodeData.examples && nodeData.examples.length > 0) {
+            const exampleDiv = document.createElement("div");
+            exampleDiv.className = "example-text";
+            exampleDiv.textContent = nodeData.examples.join("\n");
+            content.appendChild(exampleDiv);
+          }
+
+          // Add note
+          if (nodeData.note) {
+            const noteDiv = document.createElement("div");
+            noteDiv.className = "note-text";
+            noteDiv.textContent = nodeData.note;
+            content.appendChild(noteDiv);
+          }
+
+          title.addEventListener("click", () => {
+            content.classList.toggle("open");
+            title.classList.toggle("open");
+          });
+
+          node.appendChild(title);
+          node.appendChild(content);
+        } else {
+          // Simple leaf without description
+          const leaf = document.createElement("div");
+          leaf.className = "leaf";
+          leaf.textContent = nodeData.title;
+          node.appendChild(leaf);
+        }
       }
 
       return node;

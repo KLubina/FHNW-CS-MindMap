@@ -103,6 +103,36 @@
       margin: 0.4rem 0 0.2rem 1.1rem;
       font-size: 0.9em;
     }
+
+    .description {
+      margin: 0.4rem 0 0.4rem 1.1rem;
+      padding: 0.6rem 0.8rem;
+      background: #f9f9f9;
+      border-left: 3px solid #0a66c2;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      color: #333;
+    }
+
+    .example-text {
+      margin: 0.3rem 0 0.3rem 1.1rem;
+      padding: 0.5rem 0.8rem;
+      background: #f0f8ff;
+      border-left: 2px solid #87ceeb;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .note-text {
+      margin: 0.3rem 0 0.3rem 1.1rem;
+      padding: 0.5rem 0.8rem;
+      background: #fff3cd;
+      border-left: 2px solid #ffc107;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
   </style>
 </head>
 
@@ -129,85 +159,141 @@
               children: [
                 {
                   title: "grundlegende Konzepte der Programmierung",
+                  description: "Die Grundkonzepte sind Bausteine every Programming: Datentypen, Variablen und Methoden ermöglichen es uns, Daten zu speichern und zu manipulieren.",
                   children: [
                     {
                       title: "Datentypen",
-                      code: "int x = 5;\ndouble pi = 3.14;\nboolean flag = true;\nString text = \"Hallo\";\nchar letter = 'A';"
+                      description: "Datentypen definieren, welche Art von Wert eine Variable speichern kann und wieviel Speicher sie benötigt.",
+                      examples: ["int: Ganze Zahl (z.B. -100, 0, 42)", "double: Dezimalzahl (z.B. 3.14, -2.5)", "boolean: Wahr/Falsch (true/false)", "String: Text (z.B. \"Hallo\")"],
+                      code: "int x = 5;\ndouble pi = 3.14;\nboolean flag = true;\nString text = \"Hallo\";\nchar letter = 'A';",
+                      note: "Typsicherheit verhindert viele Fehler und macht Code lesbarer"
                     },
                     {
                       title: "Variablen",
-                      code: "int alter = 25;\nString name = \"Alice\";\nint x = 10, y = 20;\ndouble result = x + y;"
+                      description: "Variablen sind benannte Behälter, die Werte speichern. Sie ermöglichen es uns, Daten zu speichern und später wiederzuverwenden.",
+                      examples: ["Variablendeklaration: 'int alter = 25;'", "Mehrere Variablen: 'int x = 10, y = 20;'", "Zuweisung: 'name = \"Bob\";'"],
+                      code: "int alter = 25;\nString name = \"Alice\";\nint x = 10, y = 20;\ndouble result = x + y;",
+                      note: "Gute Variablennamen machen Code selbstdokumentierend"
                     },
                     {
                       title: "Methoden/Funktionen",
-                      code: "public int add(int a, int b) {\n    return a + b;\n}\npublic void greet(String name) {\n    System.out.println(\n        \"Hallo \" + name);\n}"
+                      description: "Methoden sind Blöcke von wiederverwendbarem Code, der spezifische Aufgaben erfüllt. Sie reduzieren Code-Duplikation.",
+                      examples: ["Methode mit Rückgabewert: 'int add(int a, int b)'", "Methode ohne Rückgabewert: 'void greet(String name)'", "Methoden macht Code wartbar und testbar"],
+                      code: "public int add(int a, int b) {\n    return a + b;\n}\npublic void greet(String name) {\n    System.out.println(\n        \"Hallo \" + name);\n}",
+                      note: "DRY-Prinzip: Don't Repeat Yourself - Code in Methoden auslagern"
                     }
                   ]
                 },
                 {
                   title: "grundlegende Konzepte des OOP",
+                  description: "Objektorientierte Programmierung organisiert Code in Objekten, die Daten (State) und Verhalten (Methods) kombinieren.",
                   children: [
                     {
                       title: "Objekt",
+                      description: "Ein Objekt ist eine Instanz einer Klasse. Es repräsentiert eine konkrete Entität mit Eigenschaften und Verhaltensweisen.",
                       children: [
                         {
                           title: "Instanziierung",
-                          code: "class Car {\n    String color;\n}\nCar myCar = new Car();\nmyCar.color = \"rot\";"
+                          description: "Instanziierung bedeutet, ein neues Objekt einer Klasse zu erstellen mit 'new'.",
+                          code: "class Car {\n    String color;\n}\nCar myCar = new Car();\nmyCar.color = \"rot\";",
+                          examples: ["'new Car()' erzeugt ein Objekt", "'myCar' ist eine Referenz auf dieses Objekt", "Mehrere Objekte können die gleiche Klasse nutzen"]
                         }
                       ]
                     },
                     {
                       title: "state vs. behaviour",
+                      description: "State sind die Daten eines Objekts (Eigenschaften/Fields), Behaviour sind die Methoden, die ein Objekt ausführen kann.",
                       children: [
                         {
                           title: "state is usually stored in instance variables (fields)",
-                          code: "public class Person {\n    // State (Zustand)\n    private String name;\n    private int age;"
+                          description: "State wird in Instanzvariablen gespeichert. Dies sind die Daten, die ein Objekt charakterisieren.",
+                          code: "public class Person {\n    // State (Zustand)\n    private String name;\n    private int age;",
+                          examples: ["name: Text-Wert", "age: Zahlen-Wert", "Jedes Person-Objekt hat sein eigenes name und age"]
                         },
                         {
                           title: "behavior is defined in methods",
-                          code: "public class Person {\n    // Behaviour (Verhalten)\n    public void speak() {\n        System.out.println(\n            \"Ich bin \" + name);\n    }\n}"
+                          description: "Behaviour wird durch Methoden definiert. Methoden sind Aktionen, die ein Objekt ausführen kann.",
+                          code: "public class Person {\n    // Behaviour (Verhalten)\n    public void speak() {\n        System.out.println(\n            \"Ich bin \" + name);\n    }\n}",
+                          examples: ["speak() ist eine Methode", "Sie greift auf den State (name) zu", "Behaviour nutzt und ändert den State"]
                         }
                       ]
                     },
                     {
                       title: "Kapselung",
+                      description: "Kapselung versteckt interne Details eines Objekts. Nur bestimmte Schnittstellen werden nach außen freigegeben.",
                       children: [
                         {
                           title: "public",
-                          code: "public class Example {\n    public String name;\n}\nExample ex = new Example();\nex.name = \"Test\"; // direkter Zugriff"
+                          description: "public bedeutet, dass auf ein Element von überall zugegriffen kann.",
+                          code: "public class Example {\n    public String name;\n}\nExample ex = new Example();\nex.name = \"Test\"; // direkter Zugriff",
+                          note: "Verwende public sparsam - es bricht die Kapselung"
                         },
                         {
                           title: "private",
-                          code: "public class Example {\n    private String name;\n    public void setName(String n) {\n        this.name = n;\n    }\n}"
+                          description: "private bedeutet, dass auf ein Element nur innerhalb der Klasse zugegriffen werden kann. Dies schützt die Daten.",
+                          code: "public class Example {\n    private String name;\n    public void setName(String n) {\n        this.name = n;\n    }\n}",
+                          examples: ["name kann nur über setName() geändert werden", "Validierung kann hinzugefügt werden", "Interne Änderungen beeinflussen nicht die Schnittstelle"],
+                          note: "Best Practice: Nutze private mit public Getter/Setter"
                         }
                       ]
                     },
-                    { title: "Abstraktion" },
-                    { title: "Vererbung" }
+                    {
+                      title: "Abstraktion",
+                      description: "Abstraktion bedeutet, komplexe Details zu verstecken und nur die wesentlichen Schnittstellen zu zeigen.",
+                      examples: ["Nutzer nutzt Auto, muss aber nicht wissen wie Motor funktioniert", "Klasse abstrahiert komplexe Logik", "Nur die Schnittstellen ist wichtig"]
+                    },
+                    {
+                      title: "Vererbung",
+                      description: "Vererbung ermöglicht es, dass eine Klasse Eigenschaften und Methoden von einer anderen Klasse erbt. Dies reduziert Code-Duplikation.",
+                      examples: ["class Animal { ... }", "class Dog extends Animal { ... }", "Dog erbt alle Methoden von Animal"],
+                      note: "Nutze Vererbung für 'IS-A' Beziehungen"
+                    }
                   ]
                 },
                 { title: "Best-Practices der OOP" },
                 {
                   title: "OOP-Grundbausteine",
+                  description: "Die fundamentalen Elemente von OOP sind Objekte, Referenzen und Klassen.",
                   children: [
-                    { title: "Objekte" },
+                    {
+                      title: "Objekte",
+                      description: "Objekte sind konkrete Instanzen von Klassen mit eigenen Eigenschaften und Verhalten."
+                    },
                     {
                       title: "Referenzen",
-                      code: "Person p1 = new Person();\nPerson p2 = p1; // gleiche Referenz\np1.name = \"Alice\";\nSystem.out.println(p2.name);"
+                      description: "Referenzen sind Zeiger auf Objekte. Mehrere Referenzen können auf das gleiche Objekt verweisen.",
+                      code: "Person p1 = new Person();\nPerson p2 = p1; // gleiche Referenz\np1.name = \"Alice\";\nSystem.out.println(p2.name);",
+                      examples: ["p1 und p2 verweisen auf das gleiche Objekt", "Ändere p1.name → p2.name ändert sich auch", "Wichtig für Memory-Management"],
+                      note: "Referenz ≠ Kopie: Beide Variablen zeigen auf denselben Speicherort"
                     },
                     {
                       title: "Klassen",
-                      code: "public class Cat {\n    private String name;\n    private int age;\n    public Cat(String n, int a) {\n        this.name = n;\n        this.age = a;\n    }\n}"
+                      description: "Klassen sind Blueprints für Objekte. Sie definieren die Struktur und das Verhalten.",
+                      code: "public class Cat {\n    private String name;\n    private int age;\n    public Cat(String n, int a) {\n        this.name = n;\n        this.age = a;\n    }\n}",
+                      examples: ["Klasse definiert, wie ein Cat aussieht und was er kann", "Konstruktor wird aufgerufen, wenn new Cat(...) ausgeführt wird", "Mehrere Cat-Objekte können von der gleichen Klasse erstellt werden"]
                     }
                   ]
                 },
                 {
                   title: "OOP-Softwaredesign",
+                  description: "Gute OOP-Design ist essentiell für wartbaren und skalierbaren Code.",
                   children: [
-                    { title: "Packages" },
-                    { title: "Sichtbarkeit" },
-                    { title: "Interfaces" },
-                    { title: "Polymorphie" }
+                    {
+                      title: "Packages",
+                      description: "Packages organisieren Klassen in logischen Gruppen und verhindern Namens-Konflikte."
+                    },
+                    {
+                      title: "Sichtbarkeit",
+                      description: "Sichtbarkeit modifier (public, private, protected) kontrollieren den Zugriff auf Klassen-Elemente."
+                    },
+                    {
+                      title: "Interfaces",
+                      description: "Interfaces definieren Verträge, die Klassen erfüllen müssen. Sie ermöglichen loose coupling."
+                    },
+                    {
+                      title: "Polymorphie",
+                      description: "Polymorphie ermöglicht, dass ein Objekt mehrere Formen annimmt. Verschiedene Klassen können die gleiche Schnittstelle implementieren."
+                    }
                   ]
                 }
               ]
@@ -230,19 +316,32 @@
                 },
                 {
                   title: "Collections",
+                  description: "Collections sind Container für Objekte. Verschiedene Collections haben verschiedene Eigenschaften und Anwendungsfälle.",
                   children: [
                     {
                       title: "List",
-                      code: "List<String> names = \n    new ArrayList<>();\nnames.add(\"Alice\");\nnames.add(\"Bob\");\nSystem.out.println(names.get(0));"
+                      description: "List ist geordnet und erlaubt Duplikate. Zugriff durch Index (Position).",
+                      code: "List<String> names = \n    new ArrayList<>();\nnames.add(\"Alice\");\nnames.add(\"Bob\");\nSystem.out.println(names.get(0));",
+                      examples: ["ArrayList: Dynamisches Array", "names.get(0) gibt \"Alice\" zurück", "Listen bewahren Reihenfolge"],
+                      note: "Nutze List wenn Reihenfolge wichtig ist"
                     },
                     {
                       title: "Set",
-                      code: "Set<Integer> numbers = \n    new HashSet<>();\nnumbers.add(1);\nnumbers.add(1);\nSystem.out.println(numbers);"
+                      description: "Set speichert nur eindeutige Elemente. Keine Duplikate erlaubt.",
+                      code: "Set<Integer> numbers = \n    new HashSet<>();\nnumbers.add(1);\nnumbers.add(1);\nSystem.out.println(numbers);",
+                      examples: ["HashSet: Schneller Zugriff", "Erst add(1), dann add(1) → nur 1 Element", "Sets können untereinander kombiniert werden (Union, Intersect)"],
+                      note: "Die zweite add(1) hat keinen Effekt"
                     },
-                    { title: "Queue" },
+                    {
+                      title: "Queue",
+                      description: "Queue ist First-In-First-Out (FIFO). Elemente werden hinten eingefügt und vorne entnommen."
+                    },
                     {
                       title: "Map",
-                      code: "Map<String, Integer> ages = \n    new HashMap<>();\nages.put(\"Alice\", 25);\nages.put(\"Bob\", 30);\nSystem.out.println(ages.get(\"Alice\"));"
+                      description: "Map speichert Schlüssel-Wert-Paare. Schneller Zugriff über Schlüssel.",
+                      code: "Map<String, Integer> ages = \n    new HashMap<>();\nages.put(\"Alice\", 25);\nages.put(\"Bob\", 30);\nSystem.out.println(ages.get(\"Alice\"));",
+                      examples: ["HashMap: Schneller Zugriff über Schlüssel", "\"Alice\" ist Schlüssel, 25 ist Wert", "ages.get(\"Alice\") gibt 25 zurück"],
+                      note: "Nutze Map für Zuordnungen und schnelle Lookups"
                     }
                   ]
                 },
@@ -255,39 +354,62 @@
                       children: [
                         {
                           title: "Suchalgorithmen",
+                          description: "Suchalgorithmen finden ein Element in einer Collection. Die Wahl des Algorithmus beeinflusst stark die Performance.",
                           children: [
                             {
                               title: "Linear Search",
-                              code: "for (int i = 0; i < array.length; i++) {\n    if (array[i] == target) {\n        return i;\n    }\n}\nreturn -1;"
+                              description: "Linear Search überprüft jedes Element nacheinander. Einfach aber langsam.",
+                              code: "for (int i = 0; i < array.length; i++) {\n    if (array[i] == target) {\n        return i;\n    }\n}\nreturn -1;",
+                              examples: ["Array: [3, 7, 2, 5, 1], Target: 5", "Überprüfe 3 (nein), 7 (nein), 2 (nein), 5 (ja!) → Index 3"],
+                              note: "Zeitkomplexität: O(n) — kann alle Elemente überprüfen müssen"
                             },
                             {
                               title: "Binary Search",
-                              code: "int left = 0, right = n - 1;\nwhile (left <= right) {\n    int mid = (left + right) / 2;\n    if (array[mid] == target)\n        return mid;\n    else if (array[mid] < target)\n        left = mid + 1;\n    else\n        right = mid - 1;\n}\nreturn -1;"
+                              description: "Binary Search teilt das Problem in Hälften. WICHTIG: Array muss sortiert sein!",
+                              code: "int left = 0, right = n - 1;\nwhile (left <= right) {\n    int mid = (left + right) / 2;\n    if (array[mid] == target)\n        return mid;\n    else if (array[mid] < target)\n        left = mid + 1;\n    else\n        right = mid - 1;\n}\nreturn -1;",
+                              examples: ["Sortiertes Array: [1, 2, 3, 5, 7], Target: 5", "mid=2 (3) → zu klein, mid=3 (5) → gefunden!"],
+                              note: "Zeitkomplexität: O(log n) — viel schneller als Linear Search!"
                             }
                           ]
                         },
                         {
                           title: "Sortieralgorithmen",
+                          description: "Sortieralgorithmen ordnen Elemente. Verschiedene Algorithmen haben verschiedene Performance-Charakteristiken.",
                           children: [
                             {
                               title: "Bubble Sort",
-                              code: "// Gehe durch die Liste\n// Vergleiche zwei Elemente\n// Wenn das erste grösser ist, tausche sie\n// Gehe zum nächsten\n// Wiederhole\nfor (int i = 0; i < n - 1; i++) {\n    for (int j = 0; j < n - i - 1; j++) {\n        if (array[j] > array[j + 1]) {\n            int temp = array[j];\n            array[j] = array[j + 1];\n            array[j + 1] = temp;\n        }\n    }\n}"
+                              description: "Bubble Sort vergleicht benachbarte Elemente und tauscht sie. Einfach aber ineffizient.",
+                              code: "for (int i = 0; i < n - 1; i++) {\n    for (int j = 0; j < n - i - 1; j++) {\n        if (array[j] > array[j + 1]) {\n            int temp = array[j];\n            array[j] = array[j + 1];\n            array[j + 1] = temp;\n        }\n    }\n}",
+                              examples: ["Ungeordnet: [5, 3, 1, 4]", "Pass 1: [3, 1, 4, 5] (5 ist am Ende)", "Pass 2: [1, 3, 4, 5] (fertig)"],
+                              note: "Zeitkomplexität: O(n²) — langsam für große Arrays"
                             },
                             {
                               title: "Insertion Sort",
-                              code: "for (int i = 1; i < n; i++) {\n    int key = array[i];\n    int j = i - 1;\n    while (j >= 0 && \n           array[j] > key) {\n        array[j + 1] = array[j];\n        j--;\n    }\n    array[j + 1] = key;\n}"
+                              description: "Insertion Sort baut schrittweise eine sortierte Liste auf.",
+                              code: "for (int i = 1; i < n; i++) {\n    int key = array[i];\n    int j = i - 1;\n    while (j >= 0 && \n           array[j] > key) {\n        array[j + 1] = array[j];\n        j--;\n    }\n    array[j + 1] = key;\n}",
+                              examples: ["Ungeordnet: [5, 3, 1, 4]", "3 einfügen: [3, 5, 1, 4]", "1 einfügen: [1, 3, 5, 4]"],
+                              note: "Zeitkomplexität: O(n²) aber besser bei teilweise sortierten Arrays"
                             },
                             {
                               title: "Selection Sort",
-                              code: "// Gehe durch die Liste\n// Finde das kleinste Element im unsortierten Teil\n// Tausche es mit dem ersten unsortierten Element\n// Erweitere den sortierten Teil um eins\n// Wiederhole\nfor (int i = 0; i < n - 1; i++) {\n    int minIdx = i;\n    for (int j = i + 1; j < n; j++) {\n        if (array[j] < array[minIdx])\n            minIdx = j;\n    }\n    int temp = array[i];\n    array[i] = array[minIdx];\n    array[minIdx] = temp;\n}"
+                              description: "Selection Sort findet das kleinste Element und fügt es vorne ein.",
+                              code: "for (int i = 0; i < n - 1; i++) {\n    int minIdx = i;\n    for (int j = i + 1; j < n; j++) {\n        if (array[j] < array[minIdx])\n            minIdx = j;\n    }\n    int temp = array[i];\n    array[i] = array[minIdx];\n    array[minIdx] = temp;\n}",
+                              examples: ["Ungeordnet: [5, 3, 1, 4]", "Minimum 1 → [1, 3, 5, 4]", "Minimum 3 → [1, 3, 5, 4]"],
+                              note: "Zeitkomplexität: O(n²) — konsistent, unabhängig von Input"
                             },
                             {
                               title: "Merge Sort",
-                              code: "// Teile Liste in zwei Hälften\n// Sortiere rekursiv jede Hälfte\n// Verschmelze die beiden sortierten Hälften\npublic void mergeSort(int[] array, int left, int right) {\n    if (left < right) {\n        int mid = (left + right) / 2;\n        mergeSort(array, left, mid);\n        mergeSort(array, mid + 1, right);\n        merge(array, left, mid, right);\n    }\n}\n\npublic void merge(int[] array, int left, int mid, int right) {\n    int n1 = mid - left + 1;\n    int n2 = right - mid;\n    int[] L = new int[n1];\n    int[] R = new int[n2];\n    for (int i = 0; i < n1; i++) L[i] = array[left + i];\n    for (int j = 0; j < n2; j++) R[j] = array[mid + 1 + j];\n    int i = 0, j = 0, k = left;\n    while (i < n1 && j < n2) {\n        if (L[i] <= R[j]) array[k++] = L[i++];\n        else array[k++] = R[j++];\n    }\n    while (i < n1) array[k++] = L[i++];\n    while (j < n2) array[k++] = R[j++];\n}"
+                              description: "Merge Sort teilt das Array in Hälften, sortiert jede recursiv und verschmelzt sie.",
+                              code: "public void mergeSort(int[] array, int left, int right) {\n    if (left < right) {\n        int mid = (left + right) / 2;\n        mergeSort(array, left, mid);\n        mergeSort(array, mid + 1, right);\n        merge(array, left, mid, right);\n    }\n}\n\npublic void merge(int[] array, int left, int mid, int right) {\n    int n1 = mid - left + 1;\n    int n2 = right - mid;\n    int[] L = new int[n1];\n    int[] R = new int[n2];\n    for (int i = 0; i < n1; i++) L[i] = array[left + i];\n    for (int j = 0; j < n2; j++) R[j] = array[mid + 1 + j];\n    int i = 0, j = 0, k = left;\n    while (i < n1 && j < n2) {\n        if (L[i] <= R[j]) array[k++] = L[i++];\n        else array[k++] = R[j++];\n    }\n    while (i < n1) array[k++] = L[i++];\n    while (j < n2) array[k++] = R[j++];\n}",
+                              examples: ["Dividieren: [5, 3, 1, 4] → [5, 3] und [1, 4]", "Sortieren als einzelne Elemente → Merge", "Ergebnis: [1, 3, 4, 5]"],
+                              note: "Zeitkomplexität: O(n log n) — viel schneller für große Arrays! Aber braucht Extra-Speicher"
                             },
                             {
                               title: "Quick Sort",
-                              code: "// Wähle ein Pivot\n// Partitioniere Liste in Werte <= Pivot und > Pivot\n// Sortiere rekursiv beide Teile\npublic void quickSort(int[] array, int low, int high) {\n    if (low < high) {\n        int pi = partition(array, low, high);\n        quickSort(array, low, pi - 1);\n        quickSort(array, pi + 1, high);\n    }\n}\n\npublic int partition(int[] array, int low, int high) {\n    int pivot = array[high];\n    int i = (low - 1);\n    for (int j = low; j <= high - 1; j++) {\n        if (array[j] < pivot) {\n            i++;\n            int temp = array[i];\n            array[i] = array[j];\n            array[j] = temp;\n        }\n    }\n    int temp = array[i + 1];\n    array[i + 1] = array[high];\n    array[high] = temp;\n    return i + 1;\n}"
+                              description: "Quick Sort wählt ein Pivot und partitioniert das Array. Meist der schnellste Sortieralgorithmus in der Praxis.",
+                              code: "public void quickSort(int[] array, int low, int high) {\n    if (low < high) {\n        int pi = partition(array, low, high);\n        quickSort(array, low, pi - 1);\n        quickSort(array, pi + 1, high);\n    }\n}\n\npublic int partition(int[] array, int low, int high) {\n    int pivot = array[high];\n    int i = (low - 1);\n    for (int j = low; j <= high - 1; j++) {\n        if (array[j] < pivot) {\n            i++;\n            int temp = array[i];\n            array[i] = array[j];\n            array[j] = temp;\n        }\n    }\n    int temp = array[i + 1];\n    array[i + 1] = array[high];\n    array[high] = temp;\n    return i + 1;\n}",
+                              examples: ["Array: [5, 3, 1, 4], Pivot: 4", "Kleinere: [3, 1], Größere: [5]", "Recursiv sortieren → [1, 3, 4, 5]"],
+                              note: "Zeitkomplexität: O(n log n) durchschnittlich, O(n²) worst case. In der Praxis meist schneller als Merge Sort"
                             }
                           ]
                         }
@@ -297,19 +419,51 @@
                 },
                 {
                   title: "Laufzeit- und Speicherplatzanalyse, O-Notation",
+                  description: "O-Notation beschreibt wie schnell ein Algorithmus wird, wenn die Eingabegröße wächst. Essentiell für Performance-Optimierung.",
                   children: [
-                    { title: "O(1) / konstant" },
-                    { title: "O(log n) / logarithmisch" },
-                    { title: "O(n) / linear" },
-                    { title: "O(n log n) / loglinear" },
-                    { title: "O(n^2) / quadratisch" },
-                    { title: "O(2^n) / exponentiell" },
-                    { title: "O(n!) / Fakultät" }
+                    {
+                      title: "O(1) / konstant",
+                      description: "Zeit hängt nicht von der Eingabegröße ab. Das ist die beste Performance.",
+                      examples: ["Arrayzugriff über Index: array[5]", "Hash-Map Lookup"]
+                    },
+                    {
+                      title: "O(log n) / logarithmisch",
+                      description: "Zeit wächst logarithmisch mit Größe. Sehr gut, da es schnell die Größe halbiert.",
+                      examples: ["Binary Search", "Balancierte Bäume"]
+                    },
+                    {
+                      title: "O(n) / linear",
+                      description: "Zeit wächst proportional zur Eingabegröße. Akzeptabel für die meisten Fälle.",
+                      examples: ["Lineare Suche", "Simple Schleife über alle Elemente"]
+                    },
+                    {
+                      title: "O(n log n) / loglinear",
+                      description: "Zeit ist n mal log n. Dies ist die beste durchschnittliche Komplexität für Sortierung.",
+                      examples: ["Merge Sort", "Quick Sort durchschnittlich"]
+                    },
+                    {
+                      title: "O(n^2) / quadratisch",
+                      description: "Zeit wächst mit dem Quadrat der Eingabegröße. Langsam für große Eingaben.",
+                      examples: ["Bubble Sort, Selection Sort", "Verschachtelte Schleifen"]
+                    },
+                    {
+                      title: "O(2^n) / exponentiell",
+                      description: "Zeit verdoppelt sich mit jedem zusätzlichen Element. Sehr langsam!",
+                      examples: ["Brute-force Kombinationen", "Naiver Fibonacci"]
+                    },
+                    {
+                      title: "O(n!) / Fakultät",
+                      description: "Zeit ist Fakultät von n. Die schlechteste Performance. Praktisch unmöglich für n > 12.",
+                      examples: ["Alle Permutationen", "Traveling Salesman (brute force)"]
+                    }
                   ]
                 },
                 {
                   title: "Rekursion",
-                  code: "public int factorial(int n) {\n    if (n <= 1)\n        return 1;\n    return n * factorial(n - 1);\n}\npublic void countdown(int n) {\n    if (n == 0) return;\n    System.out.println(n);\n    countdown(n - 1);\n}"
+                  description: "Rekursion bedeutet, dass eine Funktion sich selbst aufruft. Sie braucht einen Basisfall, um zu beenden.",
+                  code: "public int factorial(int n) {\n    if (n <= 1)\n        return 1;\n    return n * factorial(n - 1);\n}\npublic void countdown(int n) {\n    if (n == 0) return;\n    System.out.println(n);\n    countdown(n - 1);\n}",
+                  examples: ["Basisfall: if (n <= 1) return 1", "Rekursiver Fall: n * factorial(n-1)", "Jeder Aufruf reduziert die Größe"],
+                  note: "Wichtig: Immer einen Basisfall haben, sonst Stack Overflow!"
                 },
                 { title: "schliesslich in einer Programmiersprache formulieren." }
               ]
@@ -327,40 +481,73 @@
             },
             {
               title: "Code-Qualität",
+              description: "Code-Qualität ist essentiell für wartbaren und zuverlässigen Code. Es umfasst Verträge, Fehlerbehandlung und Best Practices.",
               children: [
-                { title: "Vor- und Nachbedingungen" },
+                {
+                  title: "Vor- und Nachbedingungen",
+                  description: "Vorbedingungen sind Annahmen vor einer Funktion, Nachbedingungen sind Garantien danach.",
+                  examples: ["Vorbedingung: Array darf nicht null sein", "Nachbedingung: Rückgabewert ist >= 0 und < array.length"]
+                },
                 {
                   title: "Invarianten",
+                  description: "Eine Invariante ist eine Regel, die immer gültig bleiben muss.",
                   children: [
-                    { title: "Eine Invariante ist eine Regel, die immer gültig bleiben muss" }
+                    {
+                      title: "Eine Invariante ist eine Regel, die immer gültig bleiben muss",
+                      examples: ["BankAccount: Saldo >= 0", "Queue: size = number of elements", "Tree: Alle Kinder sind Bäume"]
+                    }
                   ]
                 },
                 {
                   title: "Exceptions",
+                  description: "Exceptions sind eine strukturierte Methode zur Fehlerbehandlung.",
                   children: [
                     {
                       title: "try catch (finally)",
-                      code: "try {\n    int result = 10 / 0;\n} catch (ArithmeticException e) {\n    System.out.println(\n        \"Fehler: \" + e);\n} finally {\n    System.out.println(\"Fertig\");\n}"
+                      description: "try-catch-finally ermöglicht es, Fehler zu fangen und zu behandeln.",
+                      code: "try {\n    int result = 10 / 0;\n} catch (ArithmeticException e) {\n    System.out.println(\n        \"Fehler: \" + e);\n} finally {\n    System.out.println(\"Fertig\");\n}",
+                      examples: ["try: Code der fehler werfen kann", "catch: Handler für spezifische Exception", "finally: Code der IMMER ausgeführt wird"],
+                      note: "finally ist optional aber nützlich für Cleanup (Dateien schließen, etc.)"
                     },
                     {
                       title: "throws",
-                      code: "public void readFile(String file)\n    throws IOException {\n    FileReader fr = \n        new FileReader(file);\n    fr.close();\n}"
+                      description: "Mit throws deklarieren Sie, dass eine Methode eine Exception wirft statt sie zu fangen.",
+                      code: "public void readFile(String file)\n    throws IOException {\n    FileReader fr = \n        new FileReader(file);\n    fr.close();\n}",
+                      examples: ["Die Methode 'wirft' IOException", "Der Aufrufer muss IOException handhaben"],
+                      note: "Nutze throws wenn der Aufrufer besser weiß, wie man Fehler handhabe"
                     }
                   ]
                 },
-                { title: "Clean-Code" },
+                {
+                  title: "Clean-Code",
+                  description: "Clean-Code ist ein Set von Prinzipien für lesbaren, wartbaren Code.",
+                  examples: ["Aussagekräftige Namen: 'getUserAge()' nicht 'getUA()'", "Kleine Funktionen: Une Verantwortung pro Funktion", "Keine doppelten Codes: DRY Prinzip", "Gute Fehlerbehandlung: Exceptions nicht ignorieren"]
+                },
                 { title: "Testing-Grundlagen" }
               ]
             },
             {
               title: "visuelle Darstellungen",
+              description: "Diagramme helfen dabei, Hochebene-Struktur und Interaktionen von Software zu kommunizieren.",
               children: [
-                { title: "Objektdiagramme" },
-                { title: "Klassendiagramme" },
-                { title: "Sequenzdiagramme" }
+                {
+                  title: "Objektdiagramme",
+                  description: "Zeigen konkrete Objekte und ihre Beziehungen zu einem bestimmten Zeitpunkt."
+                },
+                {
+                  title: "Klassendiagramme",
+                  description: "Zeigen die Klassenhierarchie, Eigenschaften und Methoden. UML Standard."
+                },
+                {
+                  title: "Sequenzdiagramme",
+                  description: "Zeigen die Interaktion zwischen Objekten über Zeit. Wichtig für Verständnis von Abläufen."
+                }
               ]
             },
-            { title: "Selbstständig nach Umsetzungsmöglichkeiten recherchieren." }
+            {
+              title: "Selbstständig nach Umsetzungsmöglichkeiten recherchieren.",
+              description: "Die Fähigkeit, selbstständig neue Technologien und Lösungen zu recherchieren, ist fundamental für lebenslanges Lernen."
+            }
           ]
         }
       ]
@@ -372,6 +559,10 @@
 
       const hasChildren = Array.isArray(nodeData.children) && nodeData.children.length > 0;
       const hasCode = nodeData.code && nodeData.code.length > 0;
+      const hasDescription = nodeData.description && nodeData.description.length > 0;
+      const hasExamples = nodeData.examples && nodeData.examples.length > 0;
+      const hasNote = nodeData.note && nodeData.note.length > 0;
+      const hasContent = hasCode || hasDescription || hasExamples || hasNote;
 
       if (hasChildren) {
         const title = document.createElement("div");
@@ -381,16 +572,41 @@
         const content = document.createElement("div");
         content.className = "content";
 
+        // Add description if exists
+        if (hasDescription) {
+          const desc = document.createElement("div");
+          desc.className = "description";
+          desc.textContent = nodeData.description;
+          content.appendChild(desc);
+        }
+
+        // Add examples if exists
+        if (hasExamples) {
+          const exampleDiv = document.createElement("div");
+          exampleDiv.className = "example-text";
+          exampleDiv.textContent = nodeData.examples.join("\n");
+          content.appendChild(exampleDiv);
+        }
+
+        // Add code if exists
         if (hasCode) {
           const codeLabel = document.createElement("div");
           codeLabel.className = "code-label";
-          codeLabel.textContent = "Beispiel:";
+          codeLabel.textContent = "Code-Beispiel:";
           content.appendChild(codeLabel);
 
           const codeBlock = document.createElement("div");
           codeBlock.className = "code-block";
           codeBlock.textContent = nodeData.code;
           content.appendChild(codeBlock);
+        }
+
+        // Add note if exists
+        if (hasNote) {
+          const noteDiv = document.createElement("div");
+          noteDiv.className = "note-text";
+          noteDiv.textContent = nodeData.note;
+          content.appendChild(noteDiv);
         }
 
         nodeData.children.forEach(child => {
@@ -405,7 +621,7 @@
         node.appendChild(title);
         node.appendChild(content);
       } else {
-        if (hasCode) {
+        if (hasContent) {
           const titleDiv = document.createElement("div");
           titleDiv.className = "title";
           titleDiv.textContent = nodeData.title;
@@ -413,15 +629,42 @@
           const content = document.createElement("div");
           content.className = "content";
 
-          const codeLabel = document.createElement("div");
-          codeLabel.className = "code-label";
-          codeLabel.textContent = "Beispiel:";
-          content.appendChild(codeLabel);
+          // Add description if exists
+          if (hasDescription) {
+            const desc = document.createElement("div");
+            desc.className = "description";
+            desc.textContent = nodeData.description;
+            content.appendChild(desc);
+          }
 
-          const codeBlock = document.createElement("div");
-          codeBlock.className = "code-block";
-          codeBlock.textContent = nodeData.code;
-          content.appendChild(codeBlock);
+          // Add examples if exists
+          if (hasExamples) {
+            const exampleDiv = document.createElement("div");
+            exampleDiv.className = "example-text";
+            exampleDiv.textContent = nodeData.examples.join("\n");
+            content.appendChild(exampleDiv);
+          }
+
+          // Add code if exists
+          if (hasCode) {
+            const codeLabel = document.createElement("div");
+            codeLabel.className = "code-label";
+            codeLabel.textContent = "Code-Beispiel:";
+            content.appendChild(codeLabel);
+
+            const codeBlock = document.createElement("div");
+            codeBlock.className = "code-block";
+            codeBlock.textContent = nodeData.code;
+            content.appendChild(codeBlock);
+          }
+
+          // Add note if exists
+          if (hasNote) {
+            const noteDiv = document.createElement("div");
+            noteDiv.className = "note-text";
+            noteDiv.textContent = nodeData.note;
+            content.appendChild(noteDiv);
+          }
 
           titleDiv.addEventListener("click", () => {
             content.classList.toggle("open");
